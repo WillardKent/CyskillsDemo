@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import Header from "./components/Header";
 import Sidenav from "./components/Sidenav";
+import LoginPage from "./pages/LoginPage";
 
 import NationalDashboard from "./pages/mesy/national/NationalDashboard";
 import EscoSkillReview from "./pages/mesy/national/EscoSkillReview";
@@ -13,6 +15,7 @@ import PolicyMonitoring from "./pages/mesy/PolicyMonitoring";
 import ReportingCentre from "./pages/mesy/ReportingCentre";
 import ScenarioExploration from "./pages/mesy/ScenarioExploration";
 import MesySetting from "./pages/mesy/MesySetting";
+
 export type Page =
   | "national-dashboard"
   | "programme-domain"
@@ -24,11 +27,15 @@ export type Page =
   | "policy-monitoring"
   | "scenario-exploration"
   | "reporting-centre"
-  | "settings";
+  | "settings"
+  | "login";
 
 export default function App() {
   const [currentPage, setCurrentPage] =
     useState<Page>("national-dashboard");
+
+  const [isAuthenticated, setIsAuthenticated] =
+    useState(false);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -41,7 +48,6 @@ export default function App() {
       case "esco-skill-review":
         return <EscoSkillReview />;
 
-      // Temporary placeholders
       case "hei-benchmarking":
         return <HeiBenchmarking />;
 
@@ -58,18 +64,27 @@ export default function App() {
         return <PolicyMonitoring />;
 
       case "scenario-exploration":
-        return <ScenarioExploration />
+        return <ScenarioExploration />;
 
       case "reporting-centre":
-        return <ReportingCentre />
+        return <ReportingCentre />;
 
       case "settings":
-        return <MesySetting />
+        return <MesySetting />;
 
       default:
         return <NationalDashboard />;
     }
   };
+
+  // Show login page first
+  if (!isAuthenticated) {
+    return (
+      <LoginPage
+        onLogin={() => setIsAuthenticated(true)}
+      />
+    );
+  }
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#FCFCFC]">
