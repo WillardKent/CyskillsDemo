@@ -4,7 +4,7 @@ import { type LucideIcon } from "lucide-react";
 type InfoBannerButton = {
     text: string;
     icon?: LucideIcon;
-    variant?: "blue" | "white";
+    variant?: "blue" | "white" | "text";
     onClick?: () => void;
 };
 
@@ -33,11 +33,13 @@ export default function InfoBanner({
                     <span className="block font-normal text-[#414957]">
                         {notif}
                     </span>
-                    <span className=" font-medium text-[#262C36]">
+                    {/* Added whitespace-pre-wrap here */}
+                    <span className="font-medium text-[#262C36] whitespace-pre-wrap">
                         {title}
                     </span>
 
-                    <span className="font-normal text-[#414957]">
+                    {/* Added whitespace-pre-wrap here too, just in case info needs it */}
+                    <span className="font-normal text-[#414957] whitespace-pre-wrap">
                         {info}
                     </span>
 

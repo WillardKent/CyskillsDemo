@@ -10,15 +10,29 @@ export default function PolicyTargetModal({
     isOpen,
     onClose,
 }: PolicyTargetModalProps) {
-    const [subject, setDataset] = useState("");
-    const [issue, setDistrict] = useState("");
-    const [priority, setDateRange] = useState("");
+    const [framework, setFramework] = useState("");
     const [reporting, setReporting] = useState("");
+    const [targetEntity, setTargetEntity] = useState("");
+    const [entityType, setEntityType] = useState("");
+    const [location, setLocation] = useState("");
+    const [metricDefinition, setMetricDefinition] = useState("");
+    const [currentValue, setCurrentValue] = useState("");
+    const [euGoal, setEuGoal] = useState("");
+    const [dataSource, setDataSource] = useState("");
+    const [reviewStatus, setReviewStatus] = useState("");
+
     const handleSubmit = () => {
         console.log({
-            subject,
-            issue,
-            priority,
+            framework,
+            reporting,
+            targetEntity,
+            entityType,
+            location,
+            metricDefinition,
+            currentValue,
+            euGoal,
+            dataSource,
+            reviewStatus,
         });
 
         onClose();
@@ -59,8 +73,8 @@ export default function PolicyTargetModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={framework}
+                            onChange={(e) => setFramework(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
@@ -98,19 +112,19 @@ export default function PolicyTargetModal({
                     </label>
 
                     <select
-                        value={subject}
-                        onChange={(e) => setDataset(e.target.value)}
+                        value={targetEntity}
+                        onChange={(e) => setTargetEntity(e.target.value)}
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     >
-                        <option value="republic-of-cyprus">
+                        <option value="">
                             Cyprus University of Technology
                         </option>
 
-                        <option value="subject-1">
+                        <option value="entity-1">
                             Subject 1
                         </option>
 
-                        <option value="subject-2">
+                        <option value="entity-2">
                             Subject 2
                         </option>
                     </select>
@@ -123,19 +137,19 @@ export default function PolicyTargetModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={entityType}
+                            onChange={(e) => setEntityType(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 Private · Research
                             </option>
 
-                            <option value="framework-1">
+                            <option value="entity-type-1">
                                 Entity 1
                             </option>
 
-                            <option value="framework-2">
+                            <option value="entity-type-2">
                                 Entity 2
                             </option>
                         </select>
@@ -147,19 +161,19 @@ export default function PolicyTargetModal({
                         </label>
 
                         <select
-                            value={priority}
-                            onChange={(e) => setDateRange(e.target.value)}
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 Limassol
                             </option>
 
-                            <option value="2024-2025">
+                            <option value="larnaca">
                                 Larnaca
                             </option>
 
-                            <option value="2023-2024">
+                            <option value="cyprus">
                                 Cyprus
                             </option>
                         </select>
@@ -172,19 +186,19 @@ export default function PolicyTargetModal({
                     </label>
 
                     <select
-                        value={subject}
-                        onChange={(e) => setDataset(e.target.value)}
+                        value={metricDefinition}
+                        onChange={(e) => setMetricDefinition(e.target.value)}
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     >
-                        <option value="republic-of-cyprus">
+                        <option value="">
                             ICT graduate employability rate
                         </option>
 
-                        <option value="subject-1">
+                        <option value="metric-1">
                             Subject 1
                         </option>
 
-                        <option value="subject-2">
+                        <option value="metric-2">
                             Subject 2
                         </option>
                     </select>
@@ -198,19 +212,19 @@ export default function PolicyTargetModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={currentValue}
+                            onChange={(e) => setCurrentValue(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 52
                             </option>
 
-                            <option value="framework-1">
+                            <option value="71">
                                 71
                             </option>
 
-                            <option value="framework-2">
+                            <option value="92">
                                 92
                             </option>
                         </select>
@@ -222,19 +236,19 @@ export default function PolicyTargetModal({
                         </label>
 
                         <select
-                            value={priority}
-                            onChange={(e) => setDateRange(e.target.value)}
+                            value={euGoal}
+                            onChange={(e) => setEuGoal(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 75
                             </option>
 
-                            <option value="2024-2025">
+                            <option value="50">
                                 50
                             </option>
 
-                            <option value="2023-2024">
+                            <option value="90">
                                 90
                             </option>
                         </select>
@@ -247,19 +261,19 @@ export default function PolicyTargetModal({
                     </label>
 
                     <select
-                        value={subject}
-                        onChange={(e) => setDataset(e.target.value)}
+                        value={dataSource}
+                        onChange={(e) => setDataSource(e.target.value)}
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     >
-                        <option value="republic-of-cyprus">
+                        <option value="">
                             CEDEFOP
                         </option>
 
-                        <option value="subject-1">
+                        <option value="source-1">
                             Subject 1
                         </option>
 
-                        <option value="subject-2">
+                        <option value="source-2">
                             Subject 2
                         </option>
                     </select>
@@ -271,19 +285,19 @@ export default function PolicyTargetModal({
                     </label>
 
                     <select
-                        value={subject}
-                        onChange={(e) => setDataset(e.target.value)}
+                        value={reviewStatus}
+                        onChange={(e) => setReviewStatus(e.target.value)}
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     >
-                        <option value="republic-of-cyprus">
+                        <option value="">
                             Pending review
                         </option>
 
-                        <option value="subject-1">
+                        <option value="in-progress">
                             In progress review
                         </option>
 
-                        <option value="subject-2">
+                        <option value="completed">
                             Completed review
                         </option>
                     </select>

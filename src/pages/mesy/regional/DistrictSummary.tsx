@@ -162,8 +162,8 @@ const filters: TableFilter[] = [
 
     {
         columnId: "hei",
-        label: "Industry",
-        placeholder: "All Industry",
+        label: "Institution",
+        placeholder: "All Institutions",
 
         options: [
             {
@@ -210,7 +210,7 @@ export default function DistrictSummary() {
                     data={districtData}
                     columns={districtColumns}
                     filters={filters}
-                    title="Mapping review queue"
+                    title="District summary"
                 />
             </div>
 

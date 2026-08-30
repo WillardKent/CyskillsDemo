@@ -19,7 +19,7 @@ interface BarChartProps {
 export default function BarChart({
     title,
     data,
-    maxValue
+    maxValue,
 }: BarChartProps) {
     const highestValue = Math.max(
         ...data.flatMap((group) =>
@@ -34,26 +34,23 @@ export default function BarChart({
         <div className="w-full rounded-lg border border-[#F7F8FA] bg-white font-inter">
             {/* Title */}
             {title && (
-                <div className="border-b border-[#F7F8FA] px-6 py-5">
-                    <h2 className="text-lg font-medium text-[#111827]">
+                <div className="border-b border-[#F7F8FA] px-4 sm:px-6 py-4 sm:py-5">
+                    <h2 className="text-base sm:text-lg font-medium text-[#111827]">
                         {title}
                     </h2>
                 </div>
             )}
 
             {/* Chart */}
-            <div className="px-6 py-5">
-                <div className="flex w-full ">
+            <div className="px-4 sm:px-6 py-6">
+                <div className="flex flex-col items-center gap-10 md:flex-row md:items-end md:justify-around w-full">
                     {data.map((group) => (
                         <div
                             key={group.label}
-                            className="flex flex-1 flex-col items-start"
+                            className="flex flex-col items-center w-full max-w-[240px] md:max-w-none md:flex-1"
                         >
                             {/* Bars */}
-                            <div
-                                className="flex items-start justify-start gap-2"
-
-                            >
+                            <div className="flex items-end justify-center gap-2 sm:gap-3 w-full">
                                 {group.values.map((item) => {
                                     const percentage =
                                         chartMax > 0
@@ -63,10 +60,10 @@ export default function BarChart({
                                     return (
                                         <div
                                             key={item.label}
-                                            className="flex h-64 w-15 items-end"
+                                            className="flex h-48 sm:h-60 w-12 sm:w-14 items-end"
                                         >
                                             <div
-                                                className={`flex w-full items-start justify-center rounded-t-lg pt-3 ${item.gradient ?? "bg-[#4F7FD1]"}`}
+                                                className={`flex w-full items-start justify-center rounded-t-lg pt-3 transition-all duration-300 ${item.gradient ?? "bg-[#4F7FD1]"}`}
                                                 style={{
                                                     height: `${Math.min(
                                                         Math.max(
@@ -78,11 +75,9 @@ export default function BarChart({
                                                 }}
                                             >
                                                 <span
-                                                    className={`text-sm font-medium ${item.textColor ??
-                                                        "text-white"
-                                                        }`}
+                                                    className={`text-xs sm:text-sm font-medium ${item.textColor ?? "text-white"}`}
                                                 >
-                                                    {item.value}
+                                                    {item.value}%
                                                 </span>
                                             </div>
                                         </div>
@@ -91,14 +86,11 @@ export default function BarChart({
                             </div>
 
                             {/* Year */}
-                            <div className="flex w-49 justify-center">
-                                <span className="mt-2 text-sm font-medium text-[#464855]">
+                            <div className="flex justify-center mt-3">
+                                <span className="text-sm font-medium text-[#464855]">
                                     {group.label}
                                 </span>
                             </div>
-
-
-
                         </div>
                     ))}
                 </div>

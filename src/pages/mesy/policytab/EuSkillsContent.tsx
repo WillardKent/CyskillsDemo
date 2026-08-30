@@ -129,11 +129,11 @@ const EuColumns: ColumnDef<EuData, unknown>[] = [
         header: "EU 2030 Goal",
 
         cell: ({ getValue }) => {
-            const value = getValue<number>();
+            const value = getValue<string>();
 
             return (
                 <span>
-                    {value}%
+                    {value}
                 </span>
             );
         },
@@ -143,11 +143,11 @@ const EuColumns: ColumnDef<EuData, unknown>[] = [
         header: "Cyprus Current",
 
         cell: ({ getValue }) => {
-            const value = getValue<number>();
+            const value = getValue<string>();
 
             return (
                 <span>
-                    {value}%
+                    {value}
                 </span>
             );
         },

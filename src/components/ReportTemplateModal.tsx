@@ -10,13 +10,22 @@ export default function ReportTemplateModal({
     isOpen,
     onClose,
 }: ReportTemplateModalProps) {
-    const [subject, setDataset] = useState("");
-    const [issue, setDistrict] = useState("");
-    const [reporting, setReporting] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [dataSource, setDataSource] = useState("");
+    const [frequency, setFrequency] = useState("");
+    const [ownerDepartment, setOwnerDepartment] = useState("");
+    const [exportFormat, setExportFormat] = useState("");
+    const [language, setLanguage] = useState("");
     const handleSubmit = () => {
         console.log({
-            subject,
-            issue,
+            title,
+            description,
+            dataSource,
+            frequency,
+            ownerDepartment,
+            exportFormat,
+            language,
         });
 
         onClose();
@@ -53,8 +62,8 @@ export default function ReportTemplateModal({
 
                     <input
                         type="text"
-                        value={reporting}
-                        onChange={(e) => setReporting(e.target.value)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                         placeholder="Graduate Employability Report"
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] placeholder:text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     />
@@ -67,8 +76,8 @@ export default function ReportTemplateModal({
 
                     <input
                         type="text"
-                        value={reporting}
-                        onChange={(e) => setReporting(e.target.value)}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         placeholder="Aggregate 6-month employability outcomes by programme domain."
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] placeholder:text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     />
@@ -80,19 +89,19 @@ export default function ReportTemplateModal({
                     </label>
 
                     <select
-                        value={subject}
-                        onChange={(e) => setDataset(e.target.value)}
+                        value={dataSource}
+                        onChange={(e) => setDataSource(e.target.value)}
                         className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     >
-                        <option value="republic-of-cyprus">
+                        <option value="">
                             Employability Tracking
                         </option>
 
-                        <option value="subject-1">
+                        <option value="employability-tracking-1">
                             Subject 1
                         </option>
 
-                        <option value="subject-2">
+                        <option value="employability-tracking-2">
                             Subject 2
                         </option>
                     </select>
@@ -105,19 +114,19 @@ export default function ReportTemplateModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={frequency}
+                            onChange={(e) => setFrequency(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 Annual
                             </option>
 
-                            <option value="framework-1">
+                            <option value="biannual">
                                 BiAnnual
                             </option>
 
-                            <option value="framework-2">
+                            <option value="quarterly">
                                 Quarterly
                             </option>
                         </select>
@@ -129,19 +138,19 @@ export default function ReportTemplateModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={ownerDepartment}
+                            onChange={(e) => setOwnerDepartment(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 DHE Policy Analysis
                             </option>
 
-                            <option value="framework-1">
+                            <option value="department-2">
                                 Department 2
                             </option>
 
-                            <option value="framework-2">
+                            <option value="department-3">
                                 Department 3
                             </option>
                         </select>
@@ -156,19 +165,19 @@ export default function ReportTemplateModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={exportFormat}
+                            onChange={(e) => setExportFormat(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 Pdf
                             </option>
 
-                            <option value="framework-1">
+                            <option value="docs">
                                 Docs
                             </option>
 
-                            <option value="framework-2">
+                            <option value="excel">
                                 Excel
                             </option>
                         </select>
@@ -180,19 +189,19 @@ export default function ReportTemplateModal({
                         </label>
 
                         <select
-                            value={issue}
-                            onChange={(e) => setDistrict(e.target.value)}
+                            value={language}
+                            onChange={(e) => setLanguage(e.target.value)}
                             className="w-full rounded-lg border border-[#D1D5DB] px-4 py-3 text-sm font-normal text-[#7F8089]  outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                         >
                             <option value="">
                                 English
                             </option>
 
-                            <option value="framework-1">
+                            <option value="dutch">
                                 Dutch
                             </option>
 
-                            <option value="framework-2">
+                            <option value="turkish">
                                 Turkish
                             </option>
                         </select>

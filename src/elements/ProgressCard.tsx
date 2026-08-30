@@ -8,22 +8,31 @@ type ProgressItem = {
 
 type ProgressCardProps = {
     title: string;
+    desc?: string,
     items: ProgressItem[];
 };
 
 export default function ProgressCard({
     title,
+    desc,
     items,
 }: ProgressCardProps) {
     return (
-        <div className="flex w-full flex-col rounded-lg border border-[#F7F8FA] bg-white">
+        <div className="flex w-full flex-col rounded-lg border border-[#F7F8FA] bg-white font-inter">
 
             {/* Header */}
             <div className="flex w-full items-center justify-between px-6 py-5">
-                <span className="font-inter text-lg font-medium text-[#12151B]">
-                    {title}
-                </span>
+                <div>
+                    <span className="font-inter text-lg font-medium text-[#12151B]">
+                        {title}
+                    </span>
 
+                    {desc && (
+                        <div className="font-normal text-xs text-[#5C6472] mt-2.5">
+                            {desc}
+                        </div>
+                    )}
+                </div>
                 <button className="flex items-center gap-3 px-5 py-2">
                     <span className="font-inter text-xs font-medium text-[#414957]">
                         View All

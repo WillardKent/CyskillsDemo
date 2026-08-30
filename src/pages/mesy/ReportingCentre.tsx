@@ -6,6 +6,7 @@ import Button from "../../elements/Button";
 import DataCard from "../../elements/DataCard";
 import ReportTemplateModal from "../../components/ReportTemplateModal";
 import ReportPreviewModal from "../../components/ReportPreviewModal";
+import GenerateReportModal from "../../components/GenerateReportModal";
 import type { ColumnDef } from "@tanstack/react-table";
 import { Plus } from "lucide-react";
 import type {
@@ -267,13 +268,10 @@ const reportFilters: TableFilter[] = [
 export default function ReportingCentre() {
     const [isReportTemplateModalOpen, setIsReportTemplateModalOpen] = useState(false);
     const [isReportPreviewModalOpen, setIsReportPreviewModalOpen] = useState(false);
-
-
+    const [selectedReportForGenerate, setSelectedReportForGenerate] = useState<ReportCard | null>(null);
 
     return (
         <>
-
-
             <div className="flex flex-col w-full gap-2">
                 <HeaderBanner
                     breadcrumb="Reporting Centre"
@@ -290,7 +288,6 @@ export default function ReportingCentre() {
                 />
 
                 <InfoBanner title="Report templates adapt to available validated outputs. Near-term reports cover graduate supply, employability from CYGraduates, and ESCO mapping. National skills audits and labour market forecast briefs are marked as future/data-dependent."
-
                 />
                 <div className="py-5 bg-white border border-[#F7F8FA] font-inter">
                     <div className="px-6 pb-5 border-b border-[#F7F8FA]">
@@ -318,7 +315,7 @@ export default function ReportingCentre() {
                                     {
                                         text: "Generate",
                                         variant: "white",
-                                        onClick: () => { },
+                                        onClick: () => setSelectedReportForGenerate(report),
                                     },
                                     {
                                         text: "Preview",
@@ -326,7 +323,6 @@ export default function ReportingCentre() {
                                         onClick: () => setIsReportPreviewModalOpen(true),
                                     },
                                 ]}
-
                             />
                         ))}
                     </div>
@@ -348,8 +344,14 @@ export default function ReportingCentre() {
                     pdfUrl="/reports/sample.pdf"
                     fileName="sample.pdf"
                 />
-            </div>
 
+                <GenerateReportModal
+                    isOpen={Boolean(selectedReportForGenerate)}
+                    onClose={() => setSelectedReportForGenerate(null)}
+                    report={selectedReportForGenerate}
+                    onGenerate={(report) => console.log("Generating report:", report)}
+                />
+            </div>
         </>
     );
 }

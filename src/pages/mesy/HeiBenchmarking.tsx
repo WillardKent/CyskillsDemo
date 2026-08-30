@@ -291,7 +291,7 @@ export default function HeiBenchmarking() {
                             key={stat.title}
                             title={stat.title}
                             value={stat.value}
-                            source={stat.source}
+                            desc={stat.source}
                             icon={stat.icon}
                             iconColor={stat.iconColor}
                             changeColor={stat.changeColor}

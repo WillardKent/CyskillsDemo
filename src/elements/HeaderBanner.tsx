@@ -4,7 +4,7 @@ import { type LucideIcon } from "lucide-react";
 type HeaderButton = {
     text: string;
     icon?: LucideIcon;
-    variant?: "blue" | "white";
+    variant?: "blue" | "white" | "text" | "red";
     onClick?: () => void;
 };
 
@@ -22,25 +22,37 @@ export default function HeaderBanner({
     buttons,
 }: HeaderBannerProps) {
     return (
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between w-full">
             {/* Header Content */}
-            <div className="flex flex-col gap-1 font-inter">
-                <span className="text-xs font-medium text-[#7E8694]">
-                    {breadcrumb}
-                </span>
+            <div className="flex flex-col gap-1.5 font-inter max-w-3xl">
+                {breadcrumb && (
+                    <span className="text-xs sm:text-sm font-normal text-[#5C6472]">
+                        {breadcrumb}
+                    </span>
+                )}
 
-                <h1 className="text-3xl font-semibold text-[#262C36]">
+                <h1 className="text-2xl sm:text-3xl font-semibold text-[#12151B] tracking-tight">
                     {title}
                 </h1>
 
-                <span className="text-sm font-normal text-[#414957]">
-                    {description}
-                </span>
+                {description && (
+                    <p className="text-xs sm:text-sm font-normal text-[#414957] leading-relaxed">
+                        {description}
+                    </p>
+                )}
             </div>
 
             {/* Buttons */}
             {buttons && buttons.length > 0 && (
-                <div className="flex items-center gap-2">
+                <div
+                    className={`w-full sm:w-auto shrink-0 ${
+                        buttons.length === 1
+                            ? "flex"
+                            : buttons.length === 2
+                            ? "grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-2.5"
+                            : "flex flex-wrap items-center gap-2.5"
+                    }`}
+                >
                     {buttons.map((button, index) => (
                         <Button
                             key={index}
@@ -48,6 +60,7 @@ export default function HeaderBanner({
                             icon={button.icon}
                             variant={button.variant}
                             onClick={button.onClick}
+                            className="w-full sm:w-auto"
                         />
                     ))}
                 </div>

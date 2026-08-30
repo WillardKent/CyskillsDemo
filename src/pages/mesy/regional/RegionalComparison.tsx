@@ -128,19 +128,19 @@ const indicatorData = [
             "bg-[linear-gradient(225deg,#F2D468_0.01%,#F58D50_100%)]",
     },
     {
-        label: "Larnaca",
+        label: "Paphos",
         percentage: 100,
         gradient:
             "bg-[linear-gradient(225deg,#F2D468_0.01%,#F58D50_100%)]",
     },
     {
-        label: "Larnaca",
+        label: "Famagusta",
         percentage: 85,
         gradient:
             "bg-[linear-gradient(225deg,#F2D468_0.01%,#F58D50_100%)]",
     },
     {
-        label: "Larnaca",
+        label: "Kyrenia",
         percentage: 25,
         gradient:
             "bg-[linear-gradient(225deg,#F27868_0.01%,#F55050_100%)]",

@@ -125,7 +125,7 @@ export default function NationalDashboard() {
                             title={stat.title}
                             value={stat.value}
                             change={stat.change}
-                            source={stat.source}
+                            desc={stat.source}
                             icon={stat.icon}
                             iconColor={stat.iconColor}
                             changeColor={stat.changeColor}

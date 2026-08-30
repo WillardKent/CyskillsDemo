@@ -1,10 +1,18 @@
 import { Search, ChevronDown } from "lucide-react";
 import { useMemo, useState } from "react";
-
+import { Tag } from "./Tag";
+import type { TagVariant } from "./Tag";
+import Button from "./Button";
 export type CardStatus =
     | "Success"
     | "Pending Review"
     | "Under Review";
+
+const statusVariants: Record<CardStatus, TagVariant> = {
+    Success: "success",
+    "Pending Review": "warning",
+    "Under Review": "info",
+};
 
 export type RelatedReport = {
     label: string;
@@ -33,11 +41,7 @@ type MetricCardGridProps = {
     onViewDetail?: (item: MetricCardItem) => void;
 };
 
-const statusStyles: Record<CardStatus, string> = {
-    Success: "bg-[#E7F5EF] text-[#4F8B73]",
-    "Pending Review": "bg-[#F8F1E8] text-[#A86B27]",
-    "Under Review": "bg-[#EEF3FA] text-[#5576A5]",
-};
+
 
 export default function MetricCardGrid({
     data,
@@ -139,30 +143,27 @@ function MetricCard({
     onViewDetail,
 }: MetricCardProps) {
     return (
-        <div className="flex min-h-71.25 flex-col rounded-lg border border-[#E6E9EE] bg-white">
+        <div className="flex min-h-71.25 flex-col rounded-lg border border-[#F7F8FA] bg-white font-inter">
             {/* Top Content */}
-            <div className="flex flex-1 flex-col p-5">
+            <div className="flex flex-1 flex-col px-6 py-5">
                 {/* Title + Status */}
                 <div className="flex items-start justify-between gap-3">
-                    <h3 className="max-w-55 text-base font-semibold leading-6 text-[#343A45]">
+                    <h3 className=" text-lg font-medium leading-6 text-[#12151B]">
                         {item.title}
                     </h3>
 
-                    <span
-                        className={`shrink-0 rounded-md px-2.5 py-1 text-xs font-medium ${statusStyles[item.status]
-                            }`}
-                    >
+                    <Tag variant={statusVariants[item.status]}>
                         {item.status}
-                    </span>
+                    </Tag>
                 </div>
 
                 {/* Description */}
-                <p className="mt-2 text-xs leading-5 text-[#6B7280]">
+                <p className="mt-3 text-xs leading-5 text-[#5C6472]">
                     {item.description}
                 </p>
 
                 {/* Metadata */}
-                <div className="mt-auto pt-8 text-sm leading-5 text-[#4B5563]">
+                <div className="mt-auto pt-8 text-sm leading-5 text-[#262C36]">
                     <p>Source: {item.source}</p>
                     <p>Frequency: {item.frequency}</p>
                     <p>Last updated: {item.lastUpdated}</p>
@@ -170,21 +171,24 @@ function MetricCard({
 
                 {/* Category */}
                 <div className="mt-7">
-                    <span className="rounded-md bg-[#EEF3FA] px-2.5 py-1.5 text-xs font-medium text-[#5576A5]">
-                        {item.category}
-                    </span>
+
+                    <Tag variant="info">{item.category}</Tag>
+
                 </div>
             </div>
 
             {/* Footer */}
             <div className="border-t border-[#EEF0F3] px-5 py-3">
-                <button
+
+
+                <Button text="View Detail" variant="white" onClick={() => onViewDetail?.(item)} />
+                {/* <button
                     type="button"
                     onClick={() => onViewDetail?.(item)}
                     className="rounded-md border border-[#D7DCE3] px-3 py-1.5 text-xs font-medium text-[#3D4652] transition hover:bg-gray-50"
                 >
                     View Detail
-                </button>
+                </button> */}
             </div>
         </div>
     );

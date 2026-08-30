@@ -1,21 +1,11 @@
 import Logo from "../assets/cyskill.png";
 import Profile from "../assets/profile.png";
-
-import {
-    School,
-    Map,
-    Cpu,
-    BookLock,
-    FolderOpen,
-    ChevronDown,
-    ChevronUp,
-    Settings,
-    Home,
-    Minus,
-} from "lucide-react";
-
+import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useState } from "react";
-import type { Page } from "../App";
+import { useAuth } from "../auth/useAuth";
+import { navigationConfig } from "../config/navigation";
+import type { Page } from "../config/navigation";
+import { useSidebar } from "../context/SidebarContext";
 
 type SidenavProps = {
     currentPage: Page;
@@ -26,404 +16,229 @@ type ActiveIndicatorProps = {
     active: boolean;
 };
 
-function ActiveIndicator({
-    active,
-}: ActiveIndicatorProps) {
+function ActiveIndicator({ active }: ActiveIndicatorProps) {
     if (!active) return null;
-
     return (
         <div className="absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full bg-blue-600" />
     );
 }
 
-export default function Sidenav({
-    currentPage,
-    onNavigate,
-}: SidenavProps) {
-    const [isDashboardOpen, setIsDashboardOpen] = useState(false);
-    const [isRegionalOpen, setIsRegionalOpen] = useState(false);
+export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
+    const { user, logout } = useAuth();
+    const { isOpen, closeSidebar } = useSidebar();
+    const roleConfig = navigationConfig[user?.role ?? "mesy"];
+    const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
-    const mainNavClass =
-        "relative flex w-full items-center gap-3 rounded-md px-5 py-5 text-white transition hover:bg-white/5";
+    const handleNavigate = (page: Page) => {
+        onNavigate(page);
+        closeSidebar();
+    };
 
-    const subNavClass =
-        "relative flex w-full items-center gap-3 rounded-md px-5 py-4 text-left text-white transition hover:bg-white/5";
+    const mainNavClass = "relative flex w-full items-center gap-3 rounded-md px-5 py-5 text-white transition hover:bg-white/5 cursor-pointer";
+    const subNavClass = "relative flex w-full items-center gap-3 rounded-md px-5 py-4 text-left text-white transition hover:bg-white/5 cursor-pointer";
+
+    const getEditionColor = (label: string) => {
+        if (label === "Gov Edition") return "text-[#1FA855]";
+        if (label === "Graduate Edition") return "text-[#3B82F6]";
+        if (label === "HEI Edition") return "text-[#F59E0B]";
+        return "text-[#F59E0B]";
+    };
 
     return (
-        <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#120D0E] py-6">
-
-            {/* Logo */}
-            <div className="mx-2 mt-2 w-auto rounded-md bg-[#FFFFFF]/5 py-4">
-                <div className="ml-5 flex items-center gap-3">
-                    <img
-                        src={Logo}
-                        alt="Cyskills"
-                        className="h-10 w-10"
-                    />
-
-                    <div className="flex flex-col leading-tight">
-                        <span className="font-inter text-sm font-semibold text-[#F7F8FA]">
-                            CySKILLS-AI
-                        </span>
-
-                        <span className="text-xs text-[#1FA855]">
-                            Gov Edition
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Profile */}
-            <div className="mt-6 w-full border-y-2 border-y-[#67676733]/20 py-2">
-                <div className="flex items-center gap-3 px-5.5 py-4">
-                    <img
-                        src={Profile}
-                        alt="Profile"
-                        className="h-10.5 w-10.5"
-                    />
-
-                    <div className="flex flex-col leading-tight">
-                        <span className="font-inter text-sm font-medium text-[#F7F8FA]">
-                            Maria Papadopoulou
-                        </span>
-
-                        <span className="font-inter text-xs font-normal text-white">
-                            DHE · Policy Analyst
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            {/* OVERVIEW */}
-            <div className="px-5 py-0.5">
-                <span className="font-inter text-xs font-normal text-white">
-                    OVERVIEW
-                </span>
-            </div>
-
-            <div>
-
-                {/* National Dashboard */}
-                <div className="relative">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            onNavigate("national-dashboard");
-                            setIsDashboardOpen(!isDashboardOpen);
-                            setIsRegionalOpen(false);
-                        }}
-                        className={`${mainNavClass} ${currentPage === "national-dashboard"
-                            ? "bg-white/5"
-                            : ""
-                            }`}
-                    >
-                        <ActiveIndicator
-                            active={
-                                currentPage === "national-dashboard"
-                            }
-                        />
-
-                        <Home className="h-5 w-5 shrink-0" />
-
-                        <span className="flex-1 text-left text-sm font-normal">
-                            National Dashboard
-                        </span>
-
-                        {isDashboardOpen ? (
-                            <ChevronUp className="h-4 w-4" />
-                        ) : (
-                            <ChevronDown className="h-4 w-4" />
-                        )}
-                    </button>
-                </div>
-
-                {/* National Dashboard Submenu */}
+        <>
+            {/* Mobile Backdrop */}
+            {isOpen && (
                 <div
-                    className={`grid overflow-hidden transition-all duration-400 ease-in-out ${isDashboardOpen
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]"
-                        }`}
-                >
-                    <div className="min-h-0">
-
-                        {/* Supply by Programme Domain */}
-                        <button
-                            type="button"
-                            onClick={() =>
-                                onNavigate("programme-domain")
-                            }
-                            className={`${subNavClass} ${currentPage === "programme-domain"
-                                ? "bg-white/5"
-                                : ""
-                                }`}
-                        >
-                            <ActiveIndicator
-                                active={
-                                    currentPage ===
-                                    "programme-domain"
-                                }
-                            />
-
-                            <Minus className="h-5 w-5 shrink-0" />
-
-                            <span className="flex-1 text-left text-sm font-normal leading-5">
-                                Supply by programme domain
-                            </span>
-                        </button>
-
-                        {/* ESCO Skill Mapping Review */}
-                        <button
-                            type="button"
-                            onClick={() =>
-                                onNavigate("esco-skill-review")
-                            }
-                            className={`${subNavClass} ${currentPage === "esco-skill-review"
-                                ? "bg-white/5"
-                                : ""
-                                }`}
-                        >
-                            <ActiveIndicator
-                                active={
-                                    currentPage ===
-                                    "esco-skill-review"
-                                }
-                            />
-
-                            <Minus className="h-5 w-5 shrink-0" />
-
-                            <span className="flex-1 text-left text-sm font-normal leading-5">
-                                ESCO Skill Mapping Review
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-                {/* HEI Benchmarking */}
-                <button
-                    type="button"
-                    onClick={() =>
-                        onNavigate("hei-benchmarking")
-                    }
-                    className={`${mainNavClass} ${currentPage === "hei-benchmarking"
-                        ? "bg-white/5"
-                        : ""
-                        }`}
-                >
-                    <ActiveIndicator
-                        active={
-                            currentPage === "hei-benchmarking"
-                        }
-                    />
-
-                    <School className="h-5 w-5 shrink-0" />
-
-                    <span className="text-sm font-normal">
-                        HEI Benchmarking
-                    </span>
-                </button>
-
-                {/* Regional Comparison */}
-                <div className="relative">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            onNavigate("regional-comparison");
-                            setIsRegionalOpen(!isRegionalOpen);
-                            setIsDashboardOpen(false);
-                        }}
-                        className={`${mainNavClass} ${currentPage === "regional-comparison"
-                            ? "bg-white/5"
-                            : ""
-                            }`}
-                    >
-                        <ActiveIndicator
-                            active={
-                                currentPage ===
-                                "regional-comparison"
-                            }
-                        />
-
-                        <Map className="h-5 w-5 shrink-0" />
-
-                        <span className="flex-1 text-left text-sm font-normal">
-                            Regional Comparison
-                        </span>
-
-                        {isRegionalOpen ? (
-                            <ChevronUp className="h-4 w-4" />
-                        ) : (
-                            <ChevronDown className="h-4 w-4" />
-                        )}
-                    </button>
-                </div>
-
-                {/* Regional Comparison Submenu */}
-                <div
-                    className={`grid overflow-hidden transition-all duration-350 ease-in-out ${isRegionalOpen
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]"
-                        }`}
-                >
-                    <div className="min-h-0">
-
-                        {/* District-Level Skills */}
-                        <button
-                            type="button"
-                            onClick={() =>
-                                onNavigate("district-skills")
-                            }
-                            className={`${subNavClass} ${currentPage === "district-skills"
-                                ? "bg-white/5"
-                                : ""
-                                }`}
-                        >
-                            <ActiveIndicator
-                                active={
-                                    currentPage ===
-                                    "district-skills"
-                                }
-                            />
-
-                            <Minus className="h-5 w-5 shrink-0" />
-
-                            <span className="flex-1 text-left text-sm font-normal leading-5">
-                                District-Level Skills & Vacancy Summary
-                            </span>
-                        </button>
-
-                        {/* Official Indicators */}
-                        <button
-                            type="button"
-                            onClick={() =>
-                                onNavigate(
-                                    "official-indicators"
-                                )
-                            }
-                            className={`${subNavClass} ${currentPage === "official-indicators"
-                                ? "bg-white/5"
-                                : ""
-                                }`}
-                        >
-                            <ActiveIndicator
-                                active={
-                                    currentPage ===
-                                    "official-indicators"
-                                }
-                            />
-
-                            <Minus className="h-5 w-5 shrink-0" />
-
-                            <span className="flex-1 text-left text-sm font-normal leading-5">
-                                Official Indicators
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* ACTION */}
-            <div className="px-5 py-0.5">
-                <span className="font-inter text-xs font-normal text-white">
-                    ACTION
-                </span>
-            </div>
-
-            <div>
-
-                {/* Policy Monitoring */}
-                <button
-                    type="button"
-                    onClick={() =>
-                        onNavigate("policy-monitoring")
-                    }
-                    className={`${mainNavClass} ${currentPage === "policy-monitoring"
-                        ? "bg-white/5"
-                        : ""
-                        }`}
-                >
-                    <ActiveIndicator
-                        active={
-                            currentPage === "policy-monitoring"
-                        }
-                    />
-
-                    <BookLock className="h-5 w-5 shrink-0" />
-
-                    <span className="text-sm font-normal">
-                        Policy Monitoring
-                    </span>
-                </button>
-
-                {/* Scenario Exploration */}
-                <button
-                    type="button"
-                    onClick={() =>
-                        onNavigate("scenario-exploration")
-                    }
-                    className={`${mainNavClass} ${currentPage === "scenario-exploration"
-                        ? "bg-white/5"
-                        : ""
-                        }`}
-                >
-                    <ActiveIndicator
-                        active={
-                            currentPage ===
-                            "scenario-exploration"
-                        }
-                    />
-
-                    <Cpu className="h-5 w-5 shrink-0" />
-
-                    <span className="text-sm font-normal">
-                        Scenario Exploration
-                    </span>
-                </button>
-
-                {/* Reporting Centre */}
-                <button
-                    type="button"
-                    onClick={() =>
-                        onNavigate("reporting-centre")
-                    }
-                    className={`${mainNavClass} ${currentPage === "reporting-centre"
-                        ? "bg-white/5"
-                        : ""
-                        }`}
-                >
-                    <ActiveIndicator
-                        active={
-                            currentPage === "reporting-centre"
-                        }
-                    />
-
-                    <FolderOpen className="h-5 w-5 shrink-0" />
-
-                    <span className="text-sm font-normal">
-                        Reporting Centre
-                    </span>
-                </button>
-            </div>
-
-            {/* Settings */}
-            <button
-                type="button"
-                onClick={() => onNavigate("settings")}
-                className={`${mainNavClass} mt-auto ${currentPage === "settings"
-                    ? "bg-white/5"
-                    : ""
-                    }`}
-            >
-                <ActiveIndicator
-                    active={currentPage === "settings"}
+                    onClick={closeSidebar}
+                    className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs transition-opacity lg:hidden"
+                    aria-hidden="true"
                 />
+            )}
 
-                <Settings className="h-5 w-5 shrink-0" />
+            {/* Sidebar Container */}
+            <aside
+                className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-[#120D0E] py-6 transition-transform duration-300 ease-in-out lg:static lg:h-screen lg:shrink-0 lg:translate-x-0 overflow-y-auto ${
+                    isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+                }`}
+            >
+                {/* Logo & Mobile Close Button */}
+                <div className="mx-2 mt-2 flex items-center justify-between rounded-md bg-[#FFFFFF]/5 py-4 pr-3">
+                    <div className="ml-5 flex items-center gap-3">
+                        <img
+                            src={Logo}
+                            alt="Cyskills"
+                            className="h-10 w-10"
+                        />
 
-                <span className="text-sm font-normal">
-                    Settings
-                </span>
-            </button>
+                        <div className="flex flex-col leading-tight">
+                            <span className="font-inter text-sm font-semibold text-[#F7F8FA]">
+                                CySKILLS-AI
+                            </span>
 
-        </aside>
+                            <span className={`text-xs ${getEditionColor(roleConfig.editionLabel)}`}>
+                                {roleConfig.editionLabel}
+                            </span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={closeSidebar}
+                        className="flex lg:hidden rounded-md p-1.5 text-gray-400 hover:bg-white/10 hover:text-white"
+                        aria-label="Close navigation sidebar"
+                    >
+                        <X className="h-5 w-5" />
+                    </button>
+                </div>
+
+                {/* Profile */}
+                <div className="mt-6 w-full border-y-2 border-y-[#67676733]/20 py-2">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            const profilePageMap: Record<string, string> = {
+                                graduate: "graduate-profile",
+                                hei: "hei-profile",
+                                mesy: "mesy-profile",
+                            };
+                            const profilePage = profilePageMap[user?.role ?? "graduate"] ?? "graduate-profile";
+                            handleNavigate(profilePage as Page);
+                        }}
+                        className={`flex w-full items-center gap-3 px-5.5 py-4 cursor-pointer transition hover:bg-white/5 ${
+                            currentPage === "graduate-profile" || currentPage === "hei-profile" || currentPage === "mesy-profile"
+                                ? "bg-white/5"
+                                : ""
+                        }`}
+                    >
+                        <img
+                            src={Profile}
+                            alt="Profile"
+                            className="h-10.5 w-10.5 rounded-full object-cover"
+                        />
+
+                        <div className="flex flex-col leading-tight text-left">
+                            <span className="font-inter text-sm font-medium text-[#F7F8FA]">
+                                {user?.name ?? "User"}
+                            </span>
+
+                            <span className="font-inter text-xs font-normal text-white">
+                                {user?.title ?? "Role"}
+                            </span>
+                        </div>
+                    </button>
+                </div>
+
+                {/* Navigation Sections */}
+                <div className="flex-1 overflow-y-auto">
+                    {roleConfig.sections.map((section, idx) => (
+                        <div key={idx}>
+                            {section.label && (
+                                <div className="px-5 py-0.5 mt-2">
+                                    <span className="font-inter text-xs font-normal text-white/60">
+                                        {section.label}
+                                    </span>
+                                </div>
+                            )}
+                            <div>
+                                {section.items.map((item) => {
+                                    const isChildActive = item.children?.some((c) => c.id === currentPage) ?? false;
+                                    const isSelfActive = currentPage === item.id;
+                                    const isExpanded = openMenuId === item.id || isChildActive;
+
+                                    if (item.children && item.children.length > 0) {
+                                        return (
+                                            <div key={item.id} className="flex flex-col gap-1">
+                                                <div className="relative">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            handleNavigate(item.id as Page);
+                                                            setOpenMenuId(openMenuId === item.id ? null : item.id);
+                                                        }}
+                                                        className={`${mainNavClass} ${isSelfActive ? "bg-white/5" : ""}`}
+                                                    >
+                                                        <ActiveIndicator active={isSelfActive} />
+                                                        <item.icon className="h-5 w-5 shrink-0" />
+                                                        <span className="flex-1 text-left text-sm font-normal">{item.label}</span>
+                                                        {isExpanded ? (
+                                                            <ChevronUp className="h-4 w-4 text-gray-400" />
+                                                        ) : (
+                                                            <ChevronDown className="h-4 w-4 text-gray-400" />
+                                                        )}
+                                                    </button>
+                                                </div>
+
+                                                <div
+                                                    className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
+                                                        isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                                                    }`}
+                                                >
+                                                    <div className="min-h-0 flex flex-col gap-1">
+                                                        {item.children.map((child) => (
+                                                            <button
+                                                                key={child.id}
+                                                                type="button"
+                                                                onClick={() => handleNavigate(child.id as Page)}
+                                                                className={`${subNavClass} ${currentPage === child.id ? "bg-white/5" : ""}`}
+                                                            >
+                                                                <ActiveIndicator active={currentPage === child.id} />
+                                                                <child.icon className="h-5 w-5 shrink-0" />
+                                                                <span className="flex-1 text-left text-sm font-normal leading-5">
+                                                                    {child.label}
+                                                                </span>
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+
+                                    return (
+                                        <div key={item.id} className="relative">
+                                            <button
+                                                type="button"
+                                                onClick={() => handleNavigate(item.id as Page)}
+                                                className={`${mainNavClass} ${isSelfActive ? "bg-white/5" : ""}`}
+                                            >
+                                                <ActiveIndicator active={isSelfActive} />
+                                                <item.icon className="h-5 w-5 shrink-0" />
+                                                <span className="text-sm font-normal">{item.label}</span>
+                                            </button>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bottom Section */}
+                {roleConfig.bottomItems && roleConfig.bottomItems.length > 0 && (
+                    <div className="mt-auto pt-4 border-t border-white/5 flex flex-col gap-1">
+                        {roleConfig.bottomItems.map((item) => (
+                            <div key={item.id} className="relative">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        if (item.id === "logout") {
+                                            closeSidebar();
+                                            logout();
+                                        } else {
+                                            handleNavigate(item.id as Page);
+                                        }
+                                    }}
+                                    className={`${mainNavClass} ${currentPage === item.id ? "bg-white/5" : ""}`}
+                                >
+                                    <ActiveIndicator active={currentPage === item.id} />
+                                    <item.icon className="h-5 w-5 shrink-0" />
+                                    <span className="text-sm font-normal">{item.label}</span>
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </aside>
+        </>
     );
 }

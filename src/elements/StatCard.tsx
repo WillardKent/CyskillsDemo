@@ -4,8 +4,8 @@ interface StatCardProps {
     title: string;
     value: string;
     change?: string;
-    source: string;
-    icon: LucideIcon;
+    desc?: string;
+    icon?: LucideIcon;
     iconColor?: string;
     changeColor?: string;
 }
@@ -14,23 +14,26 @@ export default function StatCard({
     title,
     value,
     change,
-    source,
+    desc,
     icon: Icon,
     iconColor = "text-[#1A62F8]",
     changeColor = "text-[#1A62F8]",
 }: StatCardProps) {
     return (
-        <div className="flex h-37.5 w-full flex-col justify-between rounded-lg border border-[#F7F8FA] bg-white p-4">
+        <div className="flex h-auto w-full flex-col rounded-lg border border-[#F7F8FA] bg-white p-4 gap-2">
 
             {/* Header */}
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center justify-between gap-3 mb-3">
                 <span className="font-inter text-sm font-normal text-[#12151B]">
                     {title}
                 </span>
 
-                <div className="shrink-0 rounded-sm border border-[#EFF5FF] bg-[#F7F8FA] p-2">
-                    <Icon className={`size-4 ${iconColor}`} />
-                </div>
+                {/* Conditional rendering: Only output this div if an icon was provided */}
+                {Icon && (
+                    <div className="shrink-0 rounded-sm border border-[#EFF5FF] bg-[#F7F8FA] p-2">
+                        <Icon className={`size-4 ${iconColor}`} />
+                    </div>
+                )}
             </div>
 
             {/* Value */}
@@ -39,16 +42,19 @@ export default function StatCard({
                     {value}
                 </span>
 
-                <span
-                    className={`font-inter text-xs font-medium ${changeColor}`}
-                >
-                    {change}
-                </span>
+                {/* You might want to do the same for 'change' if you don't want empty spans */}
+                {change && (
+                    <span
+                        className={`font-inter text-xs font-medium ${changeColor}`}
+                    >
+                        {change}
+                    </span>
+                )}
             </div>
 
             {/* Source */}
             <span className="font-inter text-xs font-normal text-[#5C6472]">
-                {source}
+                {desc}
             </span>
         </div>
     );
