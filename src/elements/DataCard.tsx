@@ -43,7 +43,7 @@ export default function DataCard({
         <div className="flex w-full flex-col rounded-lg border border-[#F7F8FA] bg-white">
             {/* Header */}
             <div className="border-b border-[#F7F8FA] px-6 py-5">
-                <h2 className="text-lg font-semibold text-[#12151B]">
+                <h2 className="text-base lg:text-lg font-semibold text-[#12151B]">
                     {title}
                 </h2>
             </div>

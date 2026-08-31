@@ -226,7 +226,7 @@ export default function CurriculumMarketAlignment({
             <div className="flex flex-col gap-4 border-b border-[#F7F8FA] px-6 py-5 md:flex-row md:items-start md:justify-between">
 
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-lg font-medium text-[#12151B]">
+                    <h2 className="text-base lg:text-lg font-medium text-[#12151B]">
                         {title}
                     </h2>
 

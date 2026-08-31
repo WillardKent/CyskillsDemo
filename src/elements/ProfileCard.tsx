@@ -125,8 +125,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
                     {/* User Info */}
                     <div className="mt-3">
-                        <h1 className="text-2xl font-medium text-[#262C36]">{name}</h1>
-                        <p className="text-base font-medium text-[#5C6472] mt-1">{subtitle}</p>
+                        <h1 className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#262C36]">{name}</h1>
+                        <p className="text-sm md:text-base font-medium text-[#5C6472] mt-1">{subtitle}</p>
                         {statusTag && (
                             <div className="mt-3">
                                 <Tag variant={statusTag.variant ?? 'info'}>{statusTag.text}</Tag>
@@ -136,7 +136,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
                     {/* Detail Fields Section */}
                     <div className="mt-8">
-                        <h2 className="text-lg font-medium text-[#12151B] mb-4">{detailSectionTitle}</h2>
+                        <h2 className="text-base lg:text-lg font-medium text-[#12151B] mb-4">{detailSectionTitle}</h2>
 
                         <div className={`grid ${gridColsClass} gap-y-6 gap-x-1`}>
                             {detailFields.map((field, index) => (

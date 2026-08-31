@@ -240,7 +240,7 @@ export default function EditProfileModal({
 
                 {/* Academic Background */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">Academic Background</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">Academic Background</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <FormLabel required>University</FormLabel>
@@ -295,7 +295,7 @@ export default function EditProfileModal({
 
                 {/* Skills */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">Skill</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">Skill</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                         {formData.skills.map((skill, index) => (
                             <span
@@ -367,7 +367,7 @@ export default function EditProfileModal({
 
                 {/* Institution Details */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">Institution Details</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">Institution Details</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <FormLabel>Institution Type</FormLabel>
@@ -432,7 +432,7 @@ export default function EditProfileModal({
 
                 {/* Faculties & Programs */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">Faculties &amp; Programs</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">Faculties &amp; Programs</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 mb-4">
                         {formData.facultiesAndPrograms.map((faculty, index) => (
                             <div key={index} className="flex items-center justify-between gap-2 p-2 rounded-lg bg-gray-50 border border-gray-100">
@@ -501,7 +501,7 @@ export default function EditProfileModal({
 
                 {/* Ministry Information */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">Ministry Information</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">Ministry Information</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <FormLabel required>Ministry Name</FormLabel>

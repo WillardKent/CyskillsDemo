@@ -31,7 +31,7 @@ export default function JobCard({
             {/* Header */}
             <div className="flex justify-between items-start pb-3">
                 <div className="flex flex-col gap-1">
-                    <h1 className="text-[#12151B] font-medium text-lg">{title}</h1>
+                    <h1 className="text-[#12151B] font-medium text-base lg:text-lg">{title}</h1>
                     <h4 className="text-[#5C6472] font-normal text-xs">{company}</h4>
                 </div>
                 <Tag variant={tagVariant}>{tagLabel}</Tag>
@@ -61,7 +61,7 @@ export default function JobCard({
                     </span>
                 )}
                 {salary && (
-                    <span className="text-[#000000] text-lg font-medium">
+                    <span className="text-[#000000] text-base lg:text-lg font-medium">
                         {salary} <span className="text-[#5C6472] font-normal text-xs">/Year</span>
                     </span>
                 )}

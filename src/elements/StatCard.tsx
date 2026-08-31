@@ -38,7 +38,7 @@ export default function StatCard({
 
             {/* Value */}
             <div className="flex items-end gap-2">
-                <span className="font-inter text-2xl font-medium text-[#12151B]">
+                <span className="font-inter text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B]">
                     {value}
                 </span>
 

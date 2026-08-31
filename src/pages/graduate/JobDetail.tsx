@@ -22,7 +22,7 @@ export default function JobDetail({ data, onNavigate, savedJobs, onToggleSave }:
     if (!data) {
         return (
             <div className="flex flex-col items-center justify-center gap-4 py-20 font-inter">
-                <p className="text-lg text-[#5C6472]">No job selected.</p>
+                <p className="text-base lg:text-lg text-[#5C6472]">No job selected.</p>
                 <button
                     onClick={() => onNavigate("jobs-opportunities")}
                     className="text-sm font-medium text-[#1A62F8] hover:underline"
@@ -61,11 +61,11 @@ export default function JobDetail({ data, onNavigate, savedJobs, onToggleSave }:
                 {/* Full Job Description */}
                 <div className="flex flex-col gap-2 font-inter px-6 mt-3">
 
-                    <h2 className="text-xl font-medium text-[#12151B]">Full job description</h2>
+                    <h2 className="text-base min-[401px]:text-lg lg:text-xl font-medium text-[#12151B]">Full job description</h2>
 
                     {/* Company Description */}
                     <div className="flex flex-col gap-2">
-                        <h3 className="text-base font-medium text-[#000000]">Company Description</h3>
+                        <h3 className="text-sm md:text-base font-medium text-[#000000]">Company Description</h3>
                         {data.companyDescription.split("\n\n").map((paragraph, index) => (
                             <p key={index} className="text-sm leading-6 font-normal text-[#262C36]">
                                 {paragraph}
@@ -75,7 +75,7 @@ export default function JobDetail({ data, onNavigate, savedJobs, onToggleSave }:
 
                     {/* Job Description */}
                     <div className="flex flex-col gap-2">
-                        <h3 className="text-base font-medium text-[#000000]">Job Description</h3>
+                        <h3 className="text-sm md:text-base font-medium text-[#000000]">Job Description</h3>
                         <p className="text-sm leading-6 font-normal text-[#262C36]">
                             {data.jobDescription}
                         </p>
@@ -91,7 +91,7 @@ export default function JobDetail({ data, onNavigate, savedJobs, onToggleSave }:
 
                     {/* Qualifications */}
                     <div className="flex flex-col gap-2">
-                        <h3 className="text-base font-medium text-[#000000]">Qualifications</h3>
+                        <h3 className="text-sm md:text-base font-medium text-[#000000]">Qualifications</h3>
                         <ul className="list-disc pl-6 flex flex-col gap-1">
                             {data.qualifications.map((item, index) => (
                                 <li key={index} className="text-sm leading-6 font-normal text-[#262C36]">

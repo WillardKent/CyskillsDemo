@@ -40,7 +40,7 @@ export default function GraduateSettings() {
 
                 <div className="py-5 bg-white border border-[#F7F8FA] font-inter">
                     <div className="px-6 pb-5 border-b border-[#F7F8FA]">
-                        <h1 className="text-[#12151B] text-lg font-medium">Interface Language</h1>
+                        <h1 className="text-[#12151B] text-base lg:text-lg font-medium">Interface Language</h1>
                         <span className="text-[#5C6472] font-normal text-xs">Choose language for application interface</span>
                     </div>
                     <div className="flex items-center gap-8 px-6 py-5 bg-white">
@@ -90,7 +90,7 @@ export default function GraduateSettings() {
 
                 <div className="py-5 bg-white border border-[#F7F8FA] font-inter">
                     <div className="px-6 pb-5 border-b border-[#F7F8FA]">
-                        <h1 className="text-[#12151B] text-lg font-medium">Report Output Language</h1>
+                        <h1 className="text-[#12151B] text-base lg:text-lg font-medium">Report Output Language</h1>
                         <span className="text-[#5C6472] font-normal text-xs">Choose language for report dan export document</span>
                     </div>
                     <div className="flex items-center gap-8 px-6 py-5 bg-white">
@@ -142,7 +142,7 @@ export default function GraduateSettings() {
                 <div className="py-5 bg-white border border-[#F7F8FA] font-inter rounded-lg">
                     {/* Header Section */}
                     <div className="px-4 sm:px-6 pb-5 border-b border-[#F7F8FA]">
-                        <h1 className="text-[#12151B] text-lg font-medium">Accessibility Settings</h1>
+                        <h1 className="text-[#12151B] text-base lg:text-lg font-medium">Accessibility Settings</h1>
                         <span className="text-[#5C6472] font-normal text-xs">
                             Customize your application to fit your needs
                         </span>

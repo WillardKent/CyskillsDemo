@@ -27,7 +27,7 @@ export default function SkillCard({
             {/* Header Section with bottom border */}
             <div className="flex justify-between items-start pb-3.5">
                 <div className="flex flex-col gap-2.5">
-                    <h1 className="text-[#12151B] font-medium text-xl">{title}</h1>
+                    <h1 className="text-[#12151B] font-medium text-base min-[401px]:text-lg lg:text-xl">{title}</h1>
                     <h4 className="text-[#5C6472] font-normal text-xs">
                         {demandText} &middot; {userLevelText}
                     </h4>

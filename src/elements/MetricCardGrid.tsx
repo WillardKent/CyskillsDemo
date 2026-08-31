@@ -148,7 +148,7 @@ function MetricCard({
             <div className="flex flex-1 flex-col px-6 py-5">
                 {/* Title + Status */}
                 <div className="flex items-start justify-between gap-3">
-                    <h3 className=" text-lg font-medium leading-6 text-[#12151B]">
+                    <h3 className=" text-base lg:text-lg font-medium leading-6 text-[#12151B]">
                         {item.title}
                     </h3>
 

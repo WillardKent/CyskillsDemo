@@ -135,10 +135,7 @@ export default function NationalDashboard() {
 
 
 
-                <InfoBanner title="Phase A data scope:&nbsp;" info="This dashboard reflects CYGraduates-based supply data only.
-                        Vacancy and demand-side figures are illustrative and marked
-                        accordingly. National shortfall claims and active vacancy counts
-                        require validated demand data not yet available."/>
+                <InfoBanner title="Phase A data scope:&nbsp;" info="This dashboard reflects CYGraduates-based supply data only. Vacancy and demand-side figures are illustrative and marked accordingly. National shortfall claims and active vacancy counts require validated demand data not yet available." />
 
                 <div className="flex w-full flex-col gap-4 xl:flex-row">
                     <ProgressCard

@@ -26,7 +26,7 @@ export default function IndicatorDetail({
                 {/* Header */}
                 <div className="flex items-start justify-between border-b border-[#EEF0F3] px-6 py-5">
                     <div>
-                        <h2 className="text-2xl font-medium text-[#12151B]">
+                        <h2 className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B]">
                             Indicator detail
                         </h2>
 
@@ -48,7 +48,7 @@ export default function IndicatorDetail({
                 <div className="flex-1 overflow-y-auto px-6 py-6">
 
                     {/* Title */}
-                    <h3 className="text-2xl font-medium text-[#12151B]">
+                    <h3 className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B]">
                         {item.title}
                     </h3>
 

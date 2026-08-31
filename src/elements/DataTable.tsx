@@ -134,7 +134,7 @@ export default function DataTable<TData>({
             {!isMinimal && (
                 <div className="border-b border-[#F7F8FA] px-6 py-5 font-inter">
                     {title && (
-                        <h1 className="text-lg font-medium text-[#12151B]">
+                        <h1 className="text-base lg:text-lg font-medium text-[#12151B]">
                             {title}
                         </h1>
                     )}

@@ -51,7 +51,7 @@ const HeiProfile: React.FC<HeiProfileProps> = ({
             {/* Summary Card */}
             <div className="bg-white border border-[#F7F8FA] rounded-lg">
                 <div className="border-b border-[#F7F8FA]">
-                    <h2 className="text-base font-semibold text-[#000000] px-6 py-5">Summary</h2>
+                    <h2 className="text-sm md:text-base font-semibold text-[#000000] px-6 py-5">Summary</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-y-6 gap-x-1 px-6 py-5">
                     <div>
@@ -76,7 +76,7 @@ const HeiProfile: React.FC<HeiProfileProps> = ({
             {/* Faculties & Programs Card */}
             <div className="bg-white border border-[#F7F8FA] rounded-lg">
                 <div className="border-b border-[#F7F8FA]">
-                    <h2 className="text-base font-semibold text-[#000000] px-6 py-5">Faculties &amp; Programs</h2>
+                    <h2 className="text-sm md:text-base font-semibold text-[#000000] px-6 py-5">Faculties &amp; Programs</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-y-6 gap-x-1 px-6 py-5">
                     {facultiesAndPrograms.map((faculty, index) => (

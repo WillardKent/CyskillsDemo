@@ -39,7 +39,7 @@ export default function MiniCard({
             )}
 
             {/* Main Title / Metric */}
-            <p className={`text-base font-semibold ${styles[variant].value} ${valueClassName}`}>
+            <p className={`text-sm md:text-base font-semibold ${styles[variant].value} ${valueClassName}`}>
                 {value}
             </p>
 

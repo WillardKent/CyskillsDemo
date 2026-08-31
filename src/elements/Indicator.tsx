@@ -43,8 +43,8 @@ export const Indicator: React.FC<IndicatorProps> = ({
 
     const sizeStyles: Record<IndicatorSize, string> = {
         sm: "px-2.5 py-1 text-xs",
-        md: "px-2.5 py-1.5 text-base",
-        lg: "px-3 py-2 text-xl",
+        md: "px-2.5 py-1.5 text-sm md:text-base",
+        lg: "px-3 py-2 text-base min-[401px]:text-lg lg:text-xl",
     };
 
     const iconSizes: Record<IndicatorSize, number> = {

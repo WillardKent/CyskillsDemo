@@ -291,7 +291,7 @@ export default function ReportingCentre() {
                 />
                 <div className="py-5 bg-white border border-[#F7F8FA] font-inter">
                     <div className="px-6 pb-5 border-b border-[#F7F8FA]">
-                        <h1 className="text-[#111827] text-lg font-medium">Report Templates</h1>
+                        <h1 className="text-[#111827] text-base lg:text-lg font-medium">Report Templates</h1>
                     </div>
                     <div className="px-6 grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                         {reports.map((report) => (

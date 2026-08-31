@@ -38,7 +38,7 @@ export default function Modal({
                     <div className="flex items-center gap-3.5">
                         {icon && <div className="shrink-0">{icon}</div>}
                         <div className="flex flex-col gap-1">
-                            <h2 className="text-xl font-medium text-[#12151B]">
+                            <h2 className="text-base min-[401px]:text-lg lg:text-xl font-medium text-[#12151B]">
                                 {title}
                             </h2>
 

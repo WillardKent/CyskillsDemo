@@ -38,8 +38,8 @@ export const DottedTag: React.FC<DottedTagProps> = ({
     const sizeStyles: Record<DottedTagSize, string> = {
 
         sm: "text-xs font-normal",
-        md: "text-base font-normal",
-        lg: "text-xl font-medium",
+        md: "text-sm md:text-base font-normal",
+        lg: "text-base min-[401px]:text-lg lg:text-xl font-medium",
     };
 
     const dottedSize: Record<DottedTagSize, string> = {

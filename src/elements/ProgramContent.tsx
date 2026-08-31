@@ -49,7 +49,7 @@ export default function ProgramContent({
             <section className="bg-white border border-[#F7F8FA] rounded-lg">
 
                 <div className="border-b border-[#F7F8FA]">
-                    <h2 className="text-xl font-semibold px-6 py-5">
+                    <h2 className="text-base min-[401px]:text-lg lg:text-xl font-semibold px-6 py-5">
                         Overview of Alignment
                     </h2>
                 </div>
@@ -61,7 +61,7 @@ export default function ProgramContent({
 
                         <div className="flex h-40 w-48 flex-col items-center justify-center rounded-xl border-2 border-[#EAF1FE] p-6 gap-4">
 
-                            <span className="text-[32px] font-medium text-[#1A62F8]">
+                            <span className="text-2xl md:text-[32px] font-medium text-[#1A62F8]">
                                 58%
                             </span>
 
@@ -82,7 +82,7 @@ export default function ProgramContent({
                     {/* Right */}
                     <div className="flex flex-col">
 
-                        <h3 className="text-2xl font-medium text-[#262C36] mb-5">
+                        <h3 className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#262C36] mb-5">
                             3 systemic gaps driving 42% of employability deficit
                         </h3>
 
@@ -125,7 +125,7 @@ export default function ProgramContent({
 
                     <div className="border-b border-[#F7F8FA]">
 
-                        <h2 className="mb-2 text-lg font-medium text-[#12151B] px-6 pt-5">
+                        <h2 className="mb-2 text-base lg:text-lg font-medium text-[#12151B] px-6 pt-5">
                             Course-Level Alignment Map
                         </h2>
 
@@ -187,7 +187,7 @@ export default function ProgramContent({
                             </DottedTag>
 
 
-                            <h4 className="text-base font-medium text-[#262C36]">
+                            <h4 className="text-sm md:text-base font-medium text-[#262C36]">
                                 {course.title}
                             </h4>
 

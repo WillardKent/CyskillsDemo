@@ -73,7 +73,7 @@ export default function GenerateCurriculumModal({
 
                 {/* AI will analyze */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">AI will analyze</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">AI will analyze</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
                         {analyzeItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-2.5">
@@ -86,7 +86,7 @@ export default function GenerateCurriculumModal({
 
                 {/* AI will identify */}
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B] mb-4">AI will identify</h3>
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B] mb-4">AI will identify</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
                         {identifyItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-2.5">

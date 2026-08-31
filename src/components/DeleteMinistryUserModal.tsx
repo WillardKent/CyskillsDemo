@@ -43,7 +43,7 @@ export default function DeleteMinistryUserModal({
                 </div>
 
                 <div>
-                    <h3 className="text-base font-semibold text-[#12151B]">
+                    <h3 className="text-sm md:text-base font-semibold text-[#12151B]">
                         Delete This Ministry User?
                     </h3>
                     <p className="mt-1 text-sm font-normal text-[#5C6472]">

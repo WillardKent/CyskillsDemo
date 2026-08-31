@@ -135,7 +135,7 @@ export default function GraduateDashboard() {
                 </div>
                 <div className="bg-white border border-[#F7F8FA]">
                     <div className="px-6 py-5 border-b border-[#F7F8FA]">
-                        <h1 className="text-[#111827] text-lg font-medium">Improve Your Skills</h1>
+                        <h1 className="text-[#111827] text-base lg:text-lg font-medium">Improve Your Skills</h1>
                     </div>
                     <div className="px-6 pb-5 pt-2 grid gap-4 grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
                         <MiniCard

@@ -46,7 +46,7 @@ export default function ModuleRecommendationCard({
             {/* Header */}
             <div className="flex items-start justify-between px-6 py-5">
                 <div>
-                    <h1 className="text-lg font-medium text[#12151B]]">
+                    <h1 className="text-base lg:text-lg font-medium text[#12151B]]">
                         {data.title}
                     </h1>
 

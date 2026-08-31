@@ -37,8 +37,8 @@ export const Tag: React.FC<TagProps> = ({
     const sizeStyles: Record<TagSize, string> = {
 
         sm: "px-2.5 py-1 text-xs font-normal",
-        md: "px-2.5 py-1.5 text-base font-normal",
-        lg: "p-2.5 text-xl font-medium",
+        md: "px-2.5 py-1.5 text-sm md:text-base font-normal",
+        lg: "p-2.5 text-base min-[401px]:text-lg lg:text-xl font-medium",
     };
 
     return (

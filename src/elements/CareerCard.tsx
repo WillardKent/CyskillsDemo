@@ -265,7 +265,7 @@ function CareerPathCard({ item, onExplore }: CareerPathCardProps) {
             {/* Header */}
             <div className="flex items-start justify-between">
                 <div>
-                    <h1 className="text-lg font-medium text-[#12151B]">{item.title}</h1>
+                    <h1 className="text-base lg:text-lg font-medium text-[#12151B]">{item.title}</h1>
                     <p className="mt-1 text-xs font-normal text-[#5C6472]">
                         {item.category} · {item.openings} openings
                     </p>
@@ -348,7 +348,7 @@ function CareerPathSidebar({ isOpen, onClose, career }: CareerPathSidebarProps) 
             <div className="fixed right-0 top-0 z-50 flex h-full w-full max-w-xl flex-col bg-white shadow-xl transition-transform duration-300 font-inter">
                 {/* Sidebar Header */}
                 <div className="flex items-center justify-between border-b border-gray-100 p-6">
-                    <h2 className="text-2xl font-medium text-[#12151B]">
+                    <h2 className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B]">
                         {career.title} Career Path
                     </h2>
                     <button
@@ -363,7 +363,7 @@ function CareerPathSidebar({ isOpen, onClose, career }: CareerPathSidebarProps) 
                 <div className="flex-1 overflow-y-auto p-6 space-y-8">
                     {career.timeline.map((step, index) => (
                         <div key={index} className="relative">
-                            <h3 className="text-xl font-medium text-[#12151B] mb-3">
+                            <h3 className="text-base min-[401px]:text-lg lg:text-xl font-medium text-[#12151B] mb-3">
                                 {step.yearTitle}
                             </h3>
                             <ul className="list-disc pl-5 space-y-2 text-xs font-normal text-[#414957] marker:text-[#414957]">

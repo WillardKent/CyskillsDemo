@@ -25,7 +25,7 @@ export default function Card({
             {/* Header */}
             <div className="flex h-24 w-full items-center justify-between border-b border-[#F7F8FA] px-6">
                 <div className="flex w-2/3 flex-col justify-center gap-2.5">
-                    <span className="block font-inter text-lg font-medium text-[#12151B]">
+                    <span className="block font-inter text-base lg:text-lg font-medium text-[#12151B]">
                         {title}
                     </span>
 

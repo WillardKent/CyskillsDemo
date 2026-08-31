@@ -57,9 +57,8 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
 
             {/* Sidebar Container */}
             <aside
-                className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-[#120D0E] py-6 transition-transform duration-300 ease-in-out lg:static lg:h-screen lg:shrink-0 lg:translate-x-0 overflow-y-auto ${
-                    isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
-                }`}
+                className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-[#120D0E] py-6 transition-transform duration-300 ease-in-out lg:static lg:h-screen lg:shrink-0 lg:translate-x-0 overflow-y-auto no-scrollbar ${isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+                    }`}
             >
                 {/* Logo & Mobile Close Button */}
                 <div className="mx-2 mt-2 flex items-center justify-between rounded-md bg-[#FFFFFF]/5 py-4 pr-3">
@@ -104,11 +103,10 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                             const profilePage = profilePageMap[user?.role ?? "graduate"] ?? "graduate-profile";
                             handleNavigate(profilePage as Page);
                         }}
-                        className={`flex w-full items-center gap-3 px-5.5 py-4 cursor-pointer transition hover:bg-white/5 ${
-                            currentPage === "graduate-profile" || currentPage === "hei-profile" || currentPage === "mesy-profile"
+                        className={`flex w-full items-center gap-3 px-5.5 py-4 cursor-pointer transition hover:bg-white/5 ${currentPage === "graduate-profile" || currentPage === "hei-profile" || currentPage === "mesy-profile"
                                 ? "bg-white/5"
                                 : ""
-                        }`}
+                            }`}
                     >
                         <img
                             src={Profile}
@@ -129,7 +127,7 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                 </div>
 
                 {/* Navigation Sections */}
-                <div className="flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto no-scrollbar">
                     {roleConfig.sections.map((section, idx) => (
                         <div key={idx}>
                             {section.label && (
@@ -169,9 +167,8 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                                                 </div>
 
                                                 <div
-                                                    className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                                                        isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                                                    }`}
+                                                    className={`grid overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                                                        }`}
                                                 >
                                                     <div className="min-h-0 flex flex-col gap-1">
                                                         {item.children.map((child) => (

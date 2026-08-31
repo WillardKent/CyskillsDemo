@@ -127,12 +127,12 @@ export default function LoginPage() {
                     </div>
 
                     {/* Main Headings */}
-                    <h1 className="text-5xl font-bold mb-2 tracking-tight">{currentContent.heading.line1}</h1>
-                    <h2 className="text-5xl font-light italic mb-2 tracking-tight text-gray-200">{currentContent.heading.italic}</h2>
-                    <h1 className="text-5xl font-bold mb-8 tracking-tight">{currentContent.heading.line2}</h1>
+                    <h1 className="text-2xl min-[401px]:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tight">{currentContent.heading.line1}</h1>
+                    <h2 className="text-2xl min-[401px]:text-3xl md:text-4xl lg:text-5xl font-light italic mb-2 tracking-tight text-gray-200">{currentContent.heading.italic}</h2>
+                    <h1 className="text-2xl min-[401px]:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tight">{currentContent.heading.line2}</h1>
 
                     {/* Description */}
-                    <p className="text-gray-300 text-base leading-relaxed mb-12">
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-12">
                         {currentContent.description}
                     </p>
 
@@ -140,7 +140,7 @@ export default function LoginPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {currentContent.stats.map((stat, idx) => (
                             <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
-                                <h3 className="text-xl font-bold mb-1">{stat.value}</h3>
+                                <h3 className="text-base min-[401px]:text-lg lg:text-xl font-bold mb-1">{stat.value}</h3>
                                 <p className="text-xs text-gray-400">{stat.label}</p>
                             </div>
                         ))}
@@ -153,7 +153,7 @@ export default function LoginPage() {
                 <div className="w-full max-w-110">
 
                     {/* Header */}
-                    <h2 className="text-3xl font-semibold text-[#000A2B] mb-3">Welcome Back!</h2>
+                    <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-semibold text-[#000A2B] mb-3">Welcome Back!</h2>
                     <p className="text-sm text-gray-500 mb-8 leading-relaxed">
                         {currentContent.formSubtitle}
                     </p>

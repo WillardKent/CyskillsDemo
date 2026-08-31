@@ -205,22 +205,22 @@ export default function HeiDashboard() {
 
                         <div className="flex flex-col gap-8">
                             <div className="flex justify-between">
-                                <h1 className="text-[#12151B] font-medium text-lg">Junior Data Analyst</h1>
+                                <h1 className="text-[#12151B] font-medium text-base lg:text-lg">Junior Data Analyst</h1>
 
                                 <Indicator variant="success">High Demand</Indicator>
                             </div>
                             <div className="flex justify-between">
-                                <h1 className="text-[#12151B] font-medium text-lg">MLOps & Model Deployment</h1>
+                                <h1 className="text-[#12151B] font-medium text-base lg:text-lg">MLOps & Model Deployment</h1>
 
                                 <Indicator variant="info">Well Matched</Indicator>
                             </div>
                             <div className="flex justify-between">
-                                <h1 className="text-[#12151B] font-medium text-lg">Java (legacy enterprise)</h1>
+                                <h1 className="text-[#12151B] font-medium text-base lg:text-lg">Java (legacy enterprise)</h1>
 
                                 <Indicator variant="warning">Moderate Gap</Indicator>
                             </div>
                             <div className="flex justify-between">
-                                <h1 className="text-[#12151B] font-medium text-lg">Waterfall Project Mgmt</h1>
+                                <h1 className="text-[#12151B] font-medium text-base lg:text-lg">Waterfall Project Mgmt</h1>
 
                                 <Indicator variant="danger">Oversupplied</Indicator>
                             </div>
@@ -236,7 +236,7 @@ export default function HeiDashboard() {
                             <div className="flex flex-row gap-2">
                                 <Tag variant="info" size="lg">84%</Tag>
                                 <div className="flex flex-col gap-2">
-                                    <h1 className="text-[#12151B] font-medium text-lg">MSc Data Science & AI</h1>
+                                    <h1 className="text-[#12151B] font-medium text-base lg:text-lg">MSc Data Science & AI</h1>
                                     <h2 className="text-[#5C6472] font-normal text-xs">85 grads</h2>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@ export default function HeiDashboard() {
                             <div className="flex flex-row gap-2">
                                 <Tag variant="info" size="lg">75%</Tag>
                                 <div className="flex flex-col gap-2">
-                                    <h1 className="text-[#12151B] font-medium text-lg">BSc Electrical Eng</h1>
+                                    <h1 className="text-[#12151B] font-medium text-base lg:text-lg">BSc Electrical Eng</h1>
                                     <h2 className="text-[#5C6472] font-normal text-xs">210 grads</h2>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@ export default function HeiDashboard() {
                             <div className="flex flex-row gap-2">
                                 <Tag variant="info" size="lg">84%</Tag>
                                 <div className="flex flex-col gap-2">
-                                    <h1 className="text-[#12151B] font-medium text-lg">BSc Computer Science</h1>
+                                    <h1 className="text-[#12151B] font-medium text-base lg:text-lg">BSc Computer Science</h1>
                                     <h2 className="text-[#5C6472] font-normal text-xs">320 grads</h2>
                                 </div>
                             </div>

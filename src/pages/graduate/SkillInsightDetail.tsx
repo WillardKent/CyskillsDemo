@@ -13,7 +13,7 @@ export default function SkillInsightDetail({ data, onNavigate }: SkillInsightDet
     if (!data) {
         return (
             <div className="flex flex-col items-center justify-center gap-4 py-20 font-inter">
-                <p className="text-lg text-[#5C6472]">No course selected.</p>
+                <p className="text-base lg:text-lg text-[#5C6472]">No course selected.</p>
                 <button
                     onClick={() => onNavigate("skill-insight")}
                     className="text-sm font-medium text-[#1A62F8] hover:underline"
@@ -47,19 +47,19 @@ export default function SkillInsightDetail({ data, onNavigate }: SkillInsightDet
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="flex flex-col gap-2 border border-[#F7F8FA] rounded-lg bg-white p-3">
                         <span className="text-sm font-normal text-[#12151B] font-inter">Provider</span>
-                        <span className="text-2xl font-medium text-[#12151B] font-inter">{data.platform}</span>
+                        <span className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B] font-inter">{data.platform}</span>
                     </div>
                     <div className="flex flex-col gap-2 border border-[#F7F8FA] rounded-lg bg-white p-3">
                         <span className="text-sm font-normal text-[#12151B] font-inter">Duration</span>
-                        <span className="text-2xl font-medium text-[#12151B] font-inter">{data.duration}</span>
+                        <span className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B] font-inter">{data.duration}</span>
                     </div>
                     <div className="flex flex-col gap-2 border border-[#F7F8FA] rounded-lg bg-white p-3">
                         <span className="text-sm font-normal text-[#12151B] font-inter">Level</span>
-                        <span className="text-2xl font-medium text-[#12151B] font-inter">{data.level}</span>
+                        <span className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B] font-inter">{data.level}</span>
                     </div>
                     <div className="flex flex-col gap-2 border border-[#F7F8FA] rounded-lg bg-white p-3">
                         <span className="text-sm font-normal text-[#12151B] font-inter">Match score gain</span>
-                        <span className="text-2xl font-medium text-[#12151B] font-inter">{data.matchScoreGain}</span>
+                        <span className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B] font-inter">{data.matchScoreGain}</span>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@ export default function SkillInsightDetail({ data, onNavigate }: SkillInsightDet
                     {/* Skills You Already Have */}
                     <div className="flex items-center border-b border-[#F7F8FA]">
 
-                        <span className="text-lg font-medium text-[#12151B] font-inter  px-6 py-5">
+                        <span className="text-base lg:text-lg font-medium text-[#12151B] font-inter  px-6 py-5">
                             Skills You Already Have
                         </span>
                     </div>

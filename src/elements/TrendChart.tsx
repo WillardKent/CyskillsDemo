@@ -180,7 +180,7 @@ export default function TrendChart({
             {/* Header */}
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between py-5 px-6 border-b border-[#F7F8FA]">
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-lg font-medium text-[#12151B]">
+                    <h2 className="text-base lg:text-lg font-medium text-[#12151B]">
                         {title}
                     </h2>
 
@@ -558,7 +558,7 @@ export default function TrendChart({
 
             {/* Footer */}
             <div className="flex items-center gap-3 rounded-lg border border-[#F7F8FA] bg-white px-6 py-5 mx-6 mb-5">
-                <div className="flex p-2.5 items-center justify-center rounded-lg border border-[#EFF5FF] bg-[#F7F8FA] text-xl font-semibold text-[#1A62F8]">
+                <div className="flex p-2.5 items-center justify-center rounded-lg border border-[#EFF5FF] bg-[#F7F8FA] text-base min-[401px]:text-lg lg:text-xl font-semibold text-[#1A62F8]">
                     <ArrowUp
                         size={20}
                         className="mr-1"
@@ -568,7 +568,7 @@ export default function TrendChart({
                 </div>
 
                 <div>
-                    <p className="text-lg font-medium text-[#12151B]">
+                    <p className="text-base lg:text-lg font-medium text-[#12151B]">
                         {footerText ||
                             `${activeSkill} demand increased over the selected period`}
                     </p>

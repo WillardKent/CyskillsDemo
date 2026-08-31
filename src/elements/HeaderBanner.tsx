@@ -31,7 +31,7 @@ export default function HeaderBanner({
                     </span>
                 )}
 
-                <h1 className="text-2xl sm:text-3xl font-semibold text-[#12151B] tracking-tight">
+                <h1 className="text-xl min-[401px]:text-2xl sm:text-3xl font-semibold text-[#12151B] tracking-tight">
                     {title}
                 </h1>
 

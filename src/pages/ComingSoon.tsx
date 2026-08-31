@@ -12,7 +12,7 @@ export default function ComingSoon({ pageName }: ComingSoonProps) {
                     <Construction className="h-8 w-8 text-[#1A62F8]" />
                 </div>
 
-                <h2 className="font-inter text-xl font-semibold text-[#12151B]">
+                <h2 className="font-inter text-base min-[401px]:text-lg lg:text-xl font-semibold text-[#12151B]">
                     {pageName ?? "This page"} is under development
                 </h2>
 

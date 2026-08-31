@@ -23,7 +23,7 @@ export default function ProgressCard({
             {/* Header */}
             <div className="flex w-full items-center justify-between px-6 py-5">
                 <div>
-                    <span className="font-inter text-lg font-medium text-[#12151B]">
+                    <span className="font-inter text-base lg:text-lg font-medium text-[#12151B]">
                         {title}
                     </span>
 

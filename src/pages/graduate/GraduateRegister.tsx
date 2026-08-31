@@ -342,7 +342,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                     }
                 `}</style>
                 <div className="w-full max-w-lg bg-white rounded-2xl p-8 md:p-10 shadow-2xl modal-animate">
-                    <h2 className="text-2xl font-bold text-[#000A2B] mb-2">Analyzing your profile...</h2>
+                    <h2 className="text-lg min-[401px]:text-xl lg:text-2xl font-bold text-[#000A2B] mb-2">Analyzing your profile...</h2>
                     <p className="text-xs text-gray-500 mb-6 leading-relaxed">
                         Our AI is matching your skills against thousands of roles and real job listings in Cyprus.
                     </p>
@@ -406,7 +406,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
             >
                 <div className="max-w-lg w-full">
                     {/* Brand Heading */}
-                    <h1 className="text-3xl font-bold tracking-tight mb-14">CySKILLS-AI</h1>
+                    <h1 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold tracking-tight mb-14">CySKILLS-AI</h1>
 
                     {/* Step list - Clickable Stepper */}
                     <div className="space-y-8">
@@ -432,7 +432,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                     </div>
                                     <div className="pt-0.5">
                                         <h3
-                                            className={`text-base font-semibold transition-colors ${isDoneOrActive
+                                            className={`text-sm md:text-base font-semibold transition-colors ${isDoneOrActive
                                                 ? 'text-white'
                                                 : 'text-gray-400 group-hover:text-gray-200'
                                                 }`}
@@ -467,7 +467,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                 YOUR PROFILE
                             </div>
 
-                            <h2 className="text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
+                            <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
                                 Tell us about yourself
                             </h2>
                             <p className="text-xs text-gray-500 mb-8 leading-relaxed">
@@ -620,7 +620,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                 ACADEMIC BACKGROUND
                             </div>
 
-                            <h2 className="text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
+                            <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
                                 Tell us about your academic background
                             </h2>
                             <p className="text-xs text-gray-500 mb-8 leading-relaxed">
@@ -918,7 +918,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                 SKILL
                             </div>
 
-                            <h2 className="text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
+                            <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
                                 What skills do you already have?
                             </h2>
                             <p className="text-xs text-gray-500 mb-8 leading-relaxed">
@@ -994,7 +994,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                 CAREER INTERESTS
                             </div>
 
-                            <h2 className="text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
+                            <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
                                 What kind of work excites you?
                             </h2>
                             <p className="text-xs text-gray-500 mb-8 leading-relaxed">
@@ -1054,7 +1054,7 @@ export default function GraduateRegister({ onBackToLogin }: GraduateRegisterProp
                                 YOUR GOALS
                             </div>
 
-                            <h2 className="text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
+                            <h2 className="text-xl min-[401px]:text-2xl lg:text-3xl font-bold text-[#000A2B] mb-2 tracking-tight">
                                 What are you aiming for?
                             </h2>
                             <p className="text-xs text-gray-500 mb-8 leading-relaxed">

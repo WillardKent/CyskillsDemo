@@ -99,7 +99,7 @@ export default function CurriculumActionModal({
                         {/* Header */}
                         <div className="flex items-start justify-between">
                             <div>
-                                <h3 className="text-lg font-medium text-[#12151B]">{module.title}</h3>
+                                <h3 className="text-base lg:text-lg font-medium text-[#12151B]">{module.title}</h3>
                                 <p className="mt-1 text-xs font-normal text-[#5C6472]">
                                     {module.category} · {module.openings} openings
                                 </p>
@@ -159,7 +159,7 @@ export default function CurriculumActionModal({
                     </div>
 
                     <div>
-                        <h3 className="text-base font-semibold text-[#12151B]">
+                        <h3 className="text-sm md:text-base font-semibold text-[#12151B]">
                             Are you sure you reject this curriculum?
                         </h3>
                         <p className="mt-1 text-sm font-normal text-[#5C6472]">
@@ -191,7 +191,7 @@ export default function CurriculumActionModal({
                     <div>
                         <div className="flex items-start justify-between">
                             <div>
-                                <h3 className="text-lg font-medium text-[#12151B]">{module.title}</h3>
+                                <h3 className="text-base lg:text-lg font-medium text-[#12151B]">{module.title}</h3>
                                 <p className="mt-1 text-xs font-normal text-[#5C6472]">
                                     {module.category} · {module.openings} openings
                                 </p>

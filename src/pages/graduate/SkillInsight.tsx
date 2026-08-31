@@ -144,7 +144,7 @@ export default function SkillInsight({ onSelectPath }: SkillInsightProps) {
                         <div className="flex flex-col gap-4">
                             {skills.map((skill, index) => (
                                 <div key={index} className="border border-[#F7F8FA] rounded-lg p-3">
-                                    <h1 className="text-base font-medium text-[#12151B] pl-3 border-l-2 border-l-[#1FA855]">
+                                    <h1 className="text-sm md:text-base font-medium text-[#12151B] pl-3 border-l-2 border-l-[#1FA855]">
                                         {skill}</h1>
                                 </div>
                             ))}

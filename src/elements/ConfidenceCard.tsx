@@ -23,7 +23,7 @@ export default function ConfidenceCard() {
         <>
             <div className="flex w-full flex-col bg-white border border-[#F7F8FA] rounded-lg">
                 <div className="px-6 py-5 border-b border-[#F7F8FA] ">
-                    <span className="font-inter text-lg font-medium text-[#12151B]">
+                    <span className="font-inter text-base lg:text-lg font-medium text-[#12151B]">
                         Confidence distribution
                     </span>
                 </div>
@@ -39,7 +39,7 @@ export default function ConfidenceCard() {
                             </div>
 
                             <div className="flex flex-col gap-2.5">
-                                <span className="text-2xl font-medium text-[#12151B]">
+                                <span className="text-lg min-[401px]:text-xl lg:text-2xl font-medium text-[#12151B]">
                                     {stat.value}
                                 </span>
 
