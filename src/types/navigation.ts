@@ -1,4 +1,8 @@
 import type { LucideIcon } from "lucide-react";
+import type { ComponentType } from "react";
+
+
+export type NavIcon = LucideIcon | ComponentType<{ className?: string }> | string;
 
 // ─── Page type ────────────────────────────────────────────────
 // Union of all valid page IDs across every role.
@@ -47,7 +51,7 @@ export type Page =
 export interface NavItem {
     id: Page;
     label: string;
-    icon: LucideIcon;
+    icon: NavIcon;
     children?: NavItem[];
 }
 

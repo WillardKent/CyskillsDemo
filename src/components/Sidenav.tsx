@@ -2,15 +2,11 @@ import Logo from "../assets/cyskill.png";
 import Profile from "../assets/profile.png";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useState } from "react";
+import { useNavigate, useLocation } from "@tanstack/react-router";
 import { useAuth } from "../auth/useAuth";
-import { navigationConfig } from "../config/navigation";
-import type { Page } from "../config/navigation";
+import { navigationConfig, PAGE_PATH_MAP, PATH_PAGE_MAP } from "../config/navigation";
+import type { Page, NavIcon } from "../config/navigation";
 import { useSidebar } from "../context/SidebarContext";
-
-type SidenavProps = {
-    currentPage: Page;
-    onNavigate: (page: Page) => void;
-};
 
 type ActiveIndicatorProps = {
     active: boolean;
@@ -23,14 +19,34 @@ function ActiveIndicator({ active }: ActiveIndicatorProps) {
     );
 }
 
-export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
+function NavIconRenderer({ icon, className = "h-5 w-5 shrink-0" }: { icon: NavIcon; className?: string }) {
+    if (typeof icon === "string") {
+        return (
+            <img
+                src={icon}
+                alt=""
+                aria-hidden="true"
+                className={`${className} object-contain`}
+            />
+        );
+    }
+    const IconComponent = icon;
+    return <IconComponent className={className} />;
+}
+
+export default function Sidenav() {
     const { user, logout } = useAuth();
     const { isOpen, closeSidebar } = useSidebar();
+    const navigate = useNavigate();
+    const location = useLocation();
     const roleConfig = navigationConfig[user?.role ?? "mesy"];
     const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
+    // Derive the current page from the URL path
+    const currentPage: Page | undefined = PATH_PAGE_MAP[location.pathname];
+
     const handleNavigate = (page: Page) => {
-        onNavigate(page);
+        navigate({ to: PAGE_PATH_MAP[page] });
         closeSidebar();
     };
 
@@ -104,8 +120,8 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                             handleNavigate(profilePage as Page);
                         }}
                         className={`flex w-full items-center gap-3 px-5.5 py-4 cursor-pointer transition hover:bg-white/5 ${currentPage === "graduate-profile" || currentPage === "hei-profile" || currentPage === "mesy-profile"
-                                ? "bg-white/5"
-                                : ""
+                            ? "bg-white/5"
+                            : ""
                             }`}
                     >
                         <img
@@ -156,7 +172,7 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                                                         className={`${mainNavClass} ${isSelfActive ? "bg-white/5" : ""}`}
                                                     >
                                                         <ActiveIndicator active={isSelfActive} />
-                                                        <item.icon className="h-5 w-5 shrink-0" />
+                                                        <NavIconRenderer icon={item.icon} />
                                                         <span className="flex-1 text-left text-sm font-normal">{item.label}</span>
                                                         {isExpanded ? (
                                                             <ChevronUp className="h-4 w-4 text-gray-400" />
@@ -179,7 +195,7 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                                                                 className={`${subNavClass} ${currentPage === child.id ? "bg-white/5" : ""}`}
                                                             >
                                                                 <ActiveIndicator active={currentPage === child.id} />
-                                                                <child.icon className="h-5 w-5 shrink-0" />
+                                                                <NavIconRenderer icon={child.icon} />
                                                                 <span className="flex-1 text-left text-sm font-normal leading-5">
                                                                     {child.label}
                                                                 </span>
@@ -199,7 +215,7 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                                                 className={`${mainNavClass} ${isSelfActive ? "bg-white/5" : ""}`}
                                             >
                                                 <ActiveIndicator active={isSelfActive} />
-                                                <item.icon className="h-5 w-5 shrink-0" />
+                                                <NavIconRenderer icon={item.icon} />
                                                 <span className="text-sm font-normal">{item.label}</span>
                                             </button>
                                         </div>
@@ -213,26 +229,31 @@ export default function Sidenav({ currentPage, onNavigate }: SidenavProps) {
                 {/* Bottom Section */}
                 {roleConfig.bottomItems && roleConfig.bottomItems.length > 0 && (
                     <div className="mt-auto pt-4 border-t border-white/5 flex flex-col gap-1">
-                        {roleConfig.bottomItems.map((item) => (
-                            <div key={item.id} className="relative">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        if (item.id === "logout") {
-                                            closeSidebar();
-                                            logout();
-                                        } else {
-                                            handleNavigate(item.id as Page);
-                                        }
-                                    }}
-                                    className={`${mainNavClass} ${currentPage === item.id ? "bg-white/5" : ""}`}
-                                >
-                                    <ActiveIndicator active={currentPage === item.id} />
-                                    <item.icon className="h-5 w-5 shrink-0" />
-                                    <span className="text-sm font-normal">{item.label}</span>
-                                </button>
-                            </div>
-                        ))}
+                        {roleConfig.bottomItems.map((item) => {
+                            const isLogout = item.id === "logout";
+                            return (
+                                <div key={item.id} className="relative">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            if (item.id === "logout") {
+                                                closeSidebar();
+                                                logout();
+                                                navigate({ to: "/login" });
+                                            } else {
+                                                handleNavigate(item.id as Page);
+                                            }
+                                        }}
+                                        className={`relative flex w-full items-center gap-3 rounded-md px-5 py-5 transition hover:bg-white/5 cursor-pointer ${isLogout ? "text-[#EF7E88]" : "text-white"
+                                            } ${currentPage === item.id ? "bg-white/5" : ""}`}
+                                    >
+                                        <ActiveIndicator active={currentPage === item.id} />
+                                        <NavIconRenderer icon={item.icon} />
+                                        <span className="text-sm font-normal">{item.label}</span>
+                                    </button>
+                                </div>
+                            );
+                        })}
                     </div>
                 )}
             </aside>

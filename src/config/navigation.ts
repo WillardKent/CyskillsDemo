@@ -1,21 +1,24 @@
 import type { LucideIcon } from "lucide-react";
 import {
-    Home,
-    School,
-    Map,
-    Cpu,
-    BookLock,
-    FolderOpen,
     Settings,
     Minus,
-    Briefcase,
-    GraduationCap,
-    Target,
-    BarChart3,
-    Building2,
-    TrendingUp,
-    ArrowRightFromLine
+    ArrowRightFromLine,
 } from "lucide-react";
+
+import Home from "../assets/icons/home.png";
+import Book from "../assets/icons/book.png";
+import Bookmark from "../assets/icons/bookmark.png";
+import Building from "../assets/icons/building.png";
+import ChartColumn from "../assets/icons/chartcolumn.png";
+import Edit from "../assets/icons/edit.png";
+import Folder from "../assets/icons/folder.png";
+import Maps from "../assets/icons/maps.png";
+import Marketing from "../assets/icons/marketing.png";
+import Policy from "../assets/icons/policy.png";
+import Smallsearch from "../assets/icons/smallsearch.png";
+import Tie from "../assets/icons/tie.png";
+import Zap from "../assets/icons/zap.png";
+import Ai from "../assets/icons/ai.png";
 import type { UserRole } from "../auth/authTypes";
 
 // ─── Page type ────────────────────────────────────────────────
@@ -64,12 +67,67 @@ export type Page =
     | "mesy-profile"
     | "logout";
 
+// ─── Path mappings ────────────────────────────────────────────
+
+/** Maps every Page ID to its URL path. */
+export const PAGE_PATH_MAP: Record<Page, string> = {
+    // MESY
+    "national-dashboard": "/national-dashboard",
+    "programme-domain": "/programme-domain",
+    "esco-skill-review": "/esco-skill-review",
+    "hei-benchmarking": "/hei-benchmarking",
+    "district-skills": "/district-skills",
+    "regional-comparison": "/regional-comparison",
+    "official-indicators": "/official-indicators",
+    "policy-monitoring": "/policy-monitoring",
+    "scenario-exploration": "/scenario-exploration",
+    "reporting-centre": "/reporting-centre",
+    "settings": "/settings",
+    // Graduate
+    "graduate-dashboard": "/graduate-dashboard",
+    "skill-improved": "/skill-improved",
+    "career-paths": "/career-paths",
+    "skill-insight": "/skill-insight",
+    "skill-insight-detail": "/skill-insight-detail",
+    "jobs-opportunities": "/jobs-opportunities",
+    "job-detail": "/job-detail",
+    "market-insight": "/market-insight",
+    "ai-assistant": "/ai-assistant",
+    "saved-jobs": "/saved-jobs",
+    "graduate-settings": "/graduate-settings",
+    "graduate-profile": "/graduate-profile",
+    // HEI
+    "hei-dashboard": "/hei-dashboard",
+    "curriculum-market-alignment": "/curriculum-market-alignment",
+    "skills-mismatch-map": "/skills-mismatch-map",
+    "graduate-employability": "/graduate-employability",
+    "emerging-skills-forecast": "/emerging-skills-forecast",
+    "program": "/program",
+    "curriculum-planner": "/curriculum-planner",
+    "hei-ai-assistant": "/hei-ai-assistant",
+    "reports": "/reports",
+    "hei-settings": "/hei-settings",
+    "hei-profile": "/hei-profile",
+    // Profile
+    "mesy-profile": "/mesy-profile",
+    "logout": "/logout",
+};
+
+/** Maps URL paths back to Page IDs. */
+export const PATH_PAGE_MAP: Record<string, Page> = Object.fromEntries(
+    Object.entries(PAGE_PATH_MAP).map(([page, path]) => [path, page as Page])
+) as Record<string, Page>;
+
 // ─── Nav item types ───────────────────────────────────────────
+import type { ComponentType } from "react";
+
+export type NavIcon = LucideIcon | ComponentType<{ className?: string }> | string;
 
 export type NavItem = {
     id: Page;
     label: string;
-    icon: LucideIcon;
+    icon: NavIcon;
+    path: string;
     children?: NavItem[];
 };
 
@@ -96,38 +154,45 @@ const mesyNav: RoleNavConfig = {
                     id: "national-dashboard",
                     label: "National Dashboard",
                     icon: Home,
+                    path: "/national-dashboard",
                     children: [
                         {
                             id: "programme-domain",
                             label: "Supply by programme domain",
                             icon: Minus,
+                            path: "/programme-domain",
                         },
                         {
                             id: "esco-skill-review",
                             label: "ESCO Skill Mapping Review",
                             icon: Minus,
+                            path: "/esco-skill-review",
                         },
                     ],
                 },
                 {
                     id: "hei-benchmarking",
                     label: "HEI Benchmarking",
-                    icon: School,
+                    icon: Building,
+                    path: "/hei-benchmarking",
                 },
                 {
                     id: "regional-comparison",
                     label: "Regional Comparison",
-                    icon: Map,
+                    icon: Maps,
+                    path: "/regional-comparison",
                     children: [
                         {
                             id: "district-skills",
                             label: "District-Level Skills & Vacancy Summary",
                             icon: Minus,
+                            path: "/district-skills",
                         },
                         {
                             id: "official-indicators",
                             label: "Official Indicators",
                             icon: Minus,
+                            path: "/official-indicators",
                         },
                     ],
                 },
@@ -139,17 +204,20 @@ const mesyNav: RoleNavConfig = {
                 {
                     id: "policy-monitoring",
                     label: "Policy Monitoring",
-                    icon: BookLock,
+                    icon: Policy,
+                    path: "/policy-monitoring",
                 },
                 {
                     id: "scenario-exploration",
                     label: "Scenario Exploration",
-                    icon: Cpu,
+                    icon: Ai,
+                    path: "/scenario-exploration",
                 },
                 {
                     id: "reporting-centre",
                     label: "Reporting Centre",
-                    icon: FolderOpen,
+                    icon: Folder,
+                    path: "/reporting-centre",
                 },
             ],
         },
@@ -159,11 +227,13 @@ const mesyNav: RoleNavConfig = {
             id: "settings",
             label: "Settings",
             icon: Settings,
+            path: "/settings",
         },
         {
             id: "logout",
             label: "Sign Out",
             icon: ArrowRightFromLine,
+            path: "/logout",
         },
     ],
 };
@@ -180,38 +250,45 @@ const graduateNav: RoleNavConfig = {
                     id: "graduate-dashboard",
                     label: "Dashboard",
                     icon: Home,
+                    path: "/graduate-dashboard",
                     children: [
                         {
                             id: "skill-improved",
                             label: "Skill Improved",
                             icon: Minus,
+                            path: "/skill-improved",
                         },
                     ],
                 },
                 {
                     id: "career-paths",
                     label: "Career Paths",
-                    icon: Briefcase,
+                    icon: Tie,
+                    path: "/career-paths",
                 },
                 {
                     id: "skill-insight",
                     label: "Skill Insight",
-                    icon: GraduationCap,
+                    icon: Zap,
+                    path: "/skill-insight",
                 },
                 {
                     id: "jobs-opportunities",
                     label: "Jobs & Opportunities",
-                    icon: GraduationCap,
+                    icon: Smallsearch,
+                    path: "/jobs-opportunities",
                 },
                 {
                     id: "market-insight",
                     label: "Market Insights",
-                    icon: GraduationCap,
+                    icon: Marketing,
+                    path: "/market-insight",
                 },
                 {
                     id: "ai-assistant",
                     label: "AI Assistant",
-                    icon: GraduationCap,
+                    icon: Ai,
+                    path: "/ai-assistant",
                 },
             ],
         },
@@ -221,7 +298,8 @@ const graduateNav: RoleNavConfig = {
                 {
                     id: "saved-jobs",
                     label: "Saved Jobs",
-                    icon: Target,
+                    icon: Bookmark,
+                    path: "/saved-jobs",
                 },
             ],
         },
@@ -231,11 +309,13 @@ const graduateNav: RoleNavConfig = {
             id: "graduate-settings",
             label: "Settings",
             icon: Settings,
+            path: "/graduate-settings",
         },
         {
             id: "logout",
             label: "Sign Out",
             icon: ArrowRightFromLine,
+            path: "/logout",
         },
     ],
 };
@@ -251,27 +331,32 @@ const heiNav: RoleNavConfig = {
                 {
                     id: "hei-dashboard",
                     label: "Dashboard",
-                    icon: Building2,
+                    icon: Building,
+                    path: "/hei-dashboard",
                     children: [
                         {
                             id: "curriculum-market-alignment",
                             label: "Curriculum–Market Alignment",
                             icon: Minus,
+                            path: "/curriculum-market-alignment",
                         },
                         {
                             id: "skills-mismatch-map",
                             label: "Skills Mismatch Map",
                             icon: Minus,
+                            path: "/skills-mismatch-map",
                         },
                         {
                             id: "graduate-employability",
                             label: "Graduate Employability",
                             icon: Minus,
+                            path: "/graduate-employability",
                         },
                         {
                             id: "emerging-skills-forecast",
                             label: "Emerging Skills Forecast",
                             icon: Minus,
+                            path: "/emerging-skills-forecast",
                         },
 
                     ],
@@ -279,22 +364,26 @@ const heiNav: RoleNavConfig = {
                 {
                     id: "program",
                     label: "Program",
-                    icon: BarChart3,
+                    icon: Book,
+                    path: "/program",
                 },
                 {
                     id: "curriculum-planner",
                     label: "Curriculum Planner",
-                    icon: TrendingUp,
+                    icon: Edit,
+                    path: "/curriculum-planner",
                 },
                 {
                     id: "hei-ai-assistant",
                     label: "Ai Assistant",
-                    icon: TrendingUp,
+                    icon: Ai,
+                    path: "/hei-ai-assistant",
                 },
                 {
                     id: "reports",
                     label: "Reports",
-                    icon: TrendingUp,
+                    icon: ChartColumn,
+                    path: "/reports",
                 },
             ],
         },
@@ -305,12 +394,14 @@ const heiNav: RoleNavConfig = {
             id: "hei-settings",
             label: "Settings",
             icon: Settings,
+            path: "/hei-settings",
         },
 
         {
             id: "logout",
             label: "Sign Out",
             icon: ArrowRightFromLine,
+            path: "/logout",
         },
     ],
 };
@@ -334,6 +425,13 @@ export function getDefaultPage(role: UserRole): Page {
         return firstSection.items[0].id;
     }
     return "settings";
+}
+
+/**
+ * Returns the default path for a given role.
+ */
+export function getDefaultPath(role: UserRole): string {
+    return PAGE_PATH_MAP[getDefaultPage(role)];
 }
 
 /**

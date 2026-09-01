@@ -279,7 +279,6 @@ export default function HeiBenchmarking() {
                         },
                         {
                             text: "Export Benchmarking Report",
-                            icon: ChevronDown,
                             variant: "blue",
                             onClick: () => console.log("Export clicked"),
                         },

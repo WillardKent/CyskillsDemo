@@ -21,7 +21,7 @@ export default function ProgressCard({
         <div className="flex w-full flex-col rounded-lg border border-[#F7F8FA] bg-white font-inter">
 
             {/* Header */}
-            <div className="flex w-full items-center justify-between px-6 py-5">
+            <div className="flex w-full items-center justify-between px-6 py-5 border-b border-[#F7F8FA]">
                 <div>
                     <span className="font-inter text-base lg:text-lg font-medium text-[#12151B]">
                         {title}

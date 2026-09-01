@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { useAuth } from '../auth/useAuth';
 import type { UserRole } from '../auth/authTypes';
-import GraduateRegister from './graduate/GraduateRegister';
-import HeiRegister from './hei/HeiRegister';
 
 interface RoleContent {
     badge: string;
@@ -79,12 +78,12 @@ const ROLE_CONTENT: Record<UserRole, RoleContent> = {
 
 export default function LoginPage() {
     const { login, isLoggingIn, loginError } = useAuth();
+    const navigate = useNavigate();
 
     const [selectedRole, setSelectedRole] = useState<UserRole>("mesy");
     const [email, setEmail] = useState("mesy@gov.cy");
     const [password, setPassword] = useState("password");
     const [showPassword, setShowPassword] = useState(false);
-    const [isRegistering, setIsRegistering] = useState(false);
 
     const roles: { role: UserRole; label: string; email: string }[] = [
         { role: "mesy", label: "MESY - Goverment", email: "mesy@gov.cy" },
@@ -98,13 +97,6 @@ export default function LoginPage() {
         e.preventDefault();
         login({ email, password, role: selectedRole });
     };
-
-    if (isRegistering) {
-        if (selectedRole === "hei") {
-            return <HeiRegister onBackToLogin={() => setIsRegistering(false)} />;
-        }
-        return <GraduateRegister onBackToLogin={() => setIsRegistering(false)} />;
-    }
 
     return (
         <div className="w-full min-h-screen flex flex-col lg:flex-row font-sans">
@@ -281,7 +273,13 @@ export default function LoginPage() {
                             New to CySKILLS-AI?{" "}
                             <button
                                 type="button"
-                                onClick={() => setIsRegistering(true)}
+                                onClick={() => {
+                                    if (selectedRole === "hei") {
+                                        navigate({ to: "/register/hei" });
+                                    } else {
+                                        navigate({ to: "/register" });
+                                    }
+                                }}
                                 className="font-semibold text-blue-800 hover:underline cursor-pointer"
                             >
                                 Request access
