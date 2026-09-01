@@ -43,14 +43,14 @@ export default function BarChart({
 
             {/* Chart */}
             <div className="px-4 sm:px-6 py-6">
-                <div className="flex flex-col items-center gap-10 md:flex-row md:items-end md:justify-around w-full">
+                <div className="flex flex-col items-center gap-10 sm:flex-row sm:items-end sm:justify-around sm:gap-4 md:gap-6 w-full">
                     {data.map((group) => (
                         <div
                             key={group.label}
-                            className="flex flex-col items-center w-full max-w-[240px] md:max-w-none md:flex-1"
+                            className="flex flex-col items-center w-full max-w-[240px] sm:max-w-none sm:flex-1 sm:min-w-0"
                         >
                             {/* Bars */}
-                            <div className="flex items-end justify-center gap-2 sm:gap-3 w-full">
+                            <div className="flex items-end justify-center gap-2 sm:gap-1.5 md:gap-3 w-full">
                                 {group.values.map((item) => {
                                     const percentage =
                                         chartMax > 0
@@ -60,7 +60,7 @@ export default function BarChart({
                                     return (
                                         <div
                                             key={item.label}
-                                            className="flex h-48 sm:h-60 w-12 sm:w-14 items-end"
+                                            className="flex h-48 sm:h-40 md:h-60 w-12 sm:w-8 md:w-14 items-end"
                                         >
                                             <div
                                                 className={`flex w-full items-start justify-center rounded-t-lg pt-3 transition-all duration-300 ${item.gradient ?? "bg-[#4F7FD1]"}`}
@@ -75,7 +75,7 @@ export default function BarChart({
                                                 }}
                                             >
                                                 <span
-                                                    className={`text-xs sm:text-sm font-medium ${item.textColor ?? "text-white"}`}
+                                                    className={`text-xs sm:text-[10px] md:text-sm font-medium ${item.textColor ?? "text-white"}`}
                                                 >
                                                     {item.value}%
                                                 </span>

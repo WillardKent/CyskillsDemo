@@ -28,7 +28,9 @@ export default function ConfidenceCard() {
                     </span>
                 </div>
 
-                <div className="flex gap-4 px-6 py-5 font-inter">
+
+                {/* <div className="flex  gap-10  sm:items-end sm:justify-around sm:gap-4 md:gap-6 w-full"> */}
+                <div className="flex flex-col sm:flex-row gap-4 px-6 py-5 font-inter">
                     {stats.map((stat, index) => (
                         <div
                             key={index}

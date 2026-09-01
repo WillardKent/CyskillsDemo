@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, ArrowUp } from "lucide-react";
 import Button from "./Button";
 export type TrendData = {
@@ -52,22 +52,29 @@ export default function TrendChart({
         (skill) => skill.label === activeSkill
     );
 
-    const chartWidth = 1000;
-    const chartHeight = 300;
+    const [isMobile, setIsMobile] = useState(
+        typeof window !== 'undefined' ? window.innerWidth < 768 : false
+    );
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const chartWidth = isMobile ? 500 : 1000;
+    const chartHeight = isMobile ? 350 : 300;
 
     /*
      * Controls the horizontal position
      * of the lines, circles, periods,
      * and tooltip together.
      */
-    const pointOffsetX = 50;
+    const pointOffsetX = isMobile ? 20 : 50;
 
-    const padding = {
-        top: 30,
-        right: 60,
-        bottom: 55,
-        left: 70,
-    };
+    const padding = isMobile
+        ? { top: 30, right: 30, bottom: 55, left: 55 }
+        : { top: 30, right: 60, bottom: 55, left: 70 };
 
     const innerWidth =
         chartWidth -
@@ -236,8 +243,8 @@ export default function TrendChart({
             </p>
 
             {/* Chart */}
-            <div className="w-full overflow-x-auto px-6">
-                <div className="min-w-175">
+            <div className="w-full md:overflow-x-auto px-6">
+                <div className="md:min-w-175 ">
                     <svg
                         viewBox={`0 0 ${chartWidth} ${chartHeight}`}
                         className="h-auto w-full overflow-visible"

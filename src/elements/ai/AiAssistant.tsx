@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { X } from "lucide-react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import RecentChats from "./RecentChats";
@@ -34,6 +35,7 @@ export default function AiAssistant({
     );
 
     const [isLoading, setIsLoading] = useState(false);
+    const [showRecentModal, setShowRecentModal] = useState(false);
 
     const handleSendMessage = async (content: string) => {
         const userMessage: ChatMessageType = {
@@ -73,10 +75,75 @@ export default function AiAssistant({
     const handleSelectChat = (chat: RecentChat) => {
         setActiveChatId(chat.id);
         setMessages(chat.messages);
+        setShowRecentModal(false);
     };
 
     return (
         <div className="flex h-full min-h-[600px] flex-col rounded-lg border border-[#F7F8FA] bg-[#F8FAFC] p-3 sm:p-4 font-inter">
+            {/* Recent Button — mobile/tablet only */}
+            {recentChats.length > 0 && (
+                <div className="lg:hidden mb-3">
+                    <button
+                        type="button"
+                        onClick={() => setShowRecentModal(true)}
+                        className="rounded-md border border-[#E1E4E9] bg-white px-4 py-2 text-sm font-medium text-[#262C36] hover:bg-[#F9FAFB] transition"
+                    >
+                        Recent
+                    </button>
+                </div>
+            )}
+
+            {/* Recent Chats Modal — mobile/tablet only */}
+            {showRecentModal && (
+                <div className="lg:hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/30"
+                        onClick={() => setShowRecentModal(false)}
+                    />
+
+                    {/* Modal */}
+                    <div className="relative z-10 w-full max-w-sm rounded-lg bg-white shadow-xl max-h-[70vh] flex flex-col">
+                        <div className="flex items-center justify-between px-6 pt-5 pb-2">
+                            <h2 className="text-base font-medium text-[#262C36]">
+                                Recent Chats
+                            </h2>
+
+                            <button
+                                type="button"
+                                onClick={() => setShowRecentModal(false)}
+                                className="rounded-md p-1 text-[#6B7280] hover:text-[#111827] hover:bg-[#F3F4F6] transition"
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto px-6 pb-5">
+                            <div className="flex flex-col gap-1">
+                                {recentChats.map((chat) => {
+                                    const isActive = chat.id === activeChatId;
+
+                                    return (
+                                        <button
+                                            key={chat.id}
+                                            type="button"
+                                            onClick={() => handleSelectChat(chat)}
+                                            className={`w-full truncate rounded text-left py-3 text-sm font-normal transition ${
+                                                isActive
+                                                    ? "text-[#2563B8]"
+                                                    : "text-[#464855] hover:bg-[#F9FAFB]"
+                                            }`}
+                                        >
+                                            {chat.title}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Main Content */}
             <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_350px]">
                 {/* Chat Area */}
@@ -112,7 +179,7 @@ export default function AiAssistant({
                     </div>
                 </div>
 
-                {/* Recent Chats */}
+                {/* Recent Chats — desktop sidebar */}
                 <div className="hidden lg:block border-l border-gray-100 pl-4">
                     <RecentChats
                         chats={recentChats}
