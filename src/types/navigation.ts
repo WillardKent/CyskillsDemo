@@ -10,7 +10,10 @@ export type Page =
     // MESY pages
     | "national-dashboard"
     | "programme-domain"
-    | "esco-skill-review"
+    | "oja-job-vacancy"
+    | "supply-demand-matrix"
+    | "indemand-skill-matrix"
+    | "occupational-demand-forecast"
     | "hei-benchmarking"
     | "district-skills"
     | "regional-comparison"
@@ -65,4 +68,3 @@ export interface RoleNavConfig {
     sections: NavSection[];
     bottomItems: NavItem[];
 }
-

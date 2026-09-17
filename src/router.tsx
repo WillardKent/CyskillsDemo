@@ -17,10 +17,12 @@ import { NavigationProvider, useAppNavigation } from "./context/NavigationContex
 import GraduateRegister from "./pages/graduate/GraduateRegister";
 import HeiRegister from "./pages/hei/HeiRegister";
 
-
 // ─── MESY page imports ───────────────────────────────────────
 import NationalDashboard from "./pages/mesy/national/NationalDashboard";
-import EscoSkillReview from "./pages/mesy/national/EscoSkillReview";
+import OjaJobVacancy from "./pages/mesy/national/OjaJobVacancy";
+import SupplyDemandMatrix from "./pages/mesy/national/SupplyDemandMatrix";
+import InDemandSkillMatrix from "./pages/mesy/national/InDemandSkillMatrix";
+import OccupationalDemandForecast from "./pages/mesy/national/OccupationalDemandForecast";
 import ProgrammeDomain from "./pages/mesy/national/ProgrammeDomain";
 import HeiBenchmarking from "./pages/mesy/HeiBenchmarking";
 import RegionalComparison from "./pages/mesy/regional/RegionalComparison";
@@ -407,10 +409,28 @@ const programmeDomainRoute = createRoute({
     component: ProgrammeDomain,
 });
 
-const escoSkillReviewRoute = createRoute({
+const ojaJobVacancyRoute = createRoute({
     getParentRoute: () => appLayoutRoute,
-    path: "/esco-skill-review",
-    component: EscoSkillReview,
+    path: "/oja-job-vacancy",
+    component: OjaJobVacancy,
+});
+
+const supplyDemandMatrixRoute = createRoute({
+    getParentRoute: () => appLayoutRoute,
+    path: "/supply-demand-matrix",
+    component: SupplyDemandMatrix,
+});
+
+const inDemandSkillMatrixRoute = createRoute({
+    getParentRoute: () => appLayoutRoute,
+    path: "/indemand-skill-matrix",
+    component: InDemandSkillMatrix,
+});
+
+const occupationalDemandForecastRoute = createRoute({
+    getParentRoute: () => appLayoutRoute,
+    path: "/occupational-demand-forecast",
+    component: OccupationalDemandForecast,
 });
 
 const heiBenchmarkingRoute = createRoute({
@@ -625,7 +645,10 @@ const appRouteTree = appLayoutRoute.addChildren([
     // MESY
     nationalDashboardRoute,
     programmeDomainRoute,
-    escoSkillReviewRoute,
+    ojaJobVacancyRoute,
+    supplyDemandMatrixRoute,
+    inDemandSkillMatrixRoute,
+    occupationalDemandForecastRoute,
     heiBenchmarkingRoute,
     regionalComparisonRoute,
     districtSkillsRoute,

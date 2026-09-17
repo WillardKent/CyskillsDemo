@@ -29,7 +29,10 @@ export type Page =
     // MESY pages
     | "national-dashboard"
     | "programme-domain"
-    | "esco-skill-review"
+    | "oja-job-vacancy"
+    | "supply-demand-matrix"
+    | "indemand-skill-matrix"
+    | "occupational-demand-forecast"
     | "hei-benchmarking"
     | "district-skills"
     | "regional-comparison"
@@ -38,7 +41,6 @@ export type Page =
     | "scenario-exploration"
     | "reporting-centre"
     | "settings"
-
     // Graduate pages
     | "graduate-dashboard"
     | "skill-improved"
@@ -75,7 +77,10 @@ export const PAGE_PATH_MAP: Record<Page, string> = {
     // MESY
     "national-dashboard": "/national-dashboard",
     "programme-domain": "/programme-domain",
-    "esco-skill-review": "/esco-skill-review",
+    "oja-job-vacancy": "/oja-job-vacancy",
+    "supply-demand-matrix": "/supply-demand-matrix",
+    "indemand-skill-matrix": "/indemand-skill-matrix",
+    "occupational-demand-forecast": "/occupational-demand-forecast",
     "hei-benchmarking": "/hei-benchmarking",
     "district-skills": "/district-skills",
     "regional-comparison": "/regional-comparison",
@@ -164,10 +169,28 @@ const mesyNav: RoleNavConfig = {
                             path: "/programme-domain",
                         },
                         {
-                            id: "esco-skill-review",
-                            label: "ESCO Skill Mapping Review",
+                            id: "oja-job-vacancy",
+                            label: "OJA Job Vacancy Explorer",
                             icon: Minus,
-                            path: "/esco-skill-review",
+                            path: "/oja-job-vacancy",
+                        },
+                        {
+                            id: "supply-demand-matrix",
+                            label: "Supply & Demand Alignment Matrix (D1 Forecast)",
+                            icon: Minus,
+                            path: "/supply-demand-matrix",
+                        },
+                        {
+                            id: "indemand-skill-matrix",
+                            label: "In-Demand Skills Matrix (D2 & OJA Integration)",
+                            icon: Minus,
+                            path: "/indemand-skill-matrix",
+                        },
+                        {
+                            id: "occupational-demand-forecast",
+                            label: "Occupational Demand Forecast (D1 Indicator)",
+                            icon: Minus,
+                            path: "/occupational-demand-forecast",
                         },
                     ],
                 },
