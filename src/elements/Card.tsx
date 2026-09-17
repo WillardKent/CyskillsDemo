@@ -58,7 +58,7 @@ export default function Card({
             <div className="flex flex-col"></div>
 
             {/* Content */}
-            <div className="px-7 py-6">
+            <div className="px-6 py-5">
                 {children}
             </div>
 

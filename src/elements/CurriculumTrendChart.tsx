@@ -286,11 +286,10 @@ export default function CurriculumMarketAlignment({
                 })}
             </div>
 
-
             {/* ================= CHART ================= */}
 
             <div className="mt-4 w-full overflow-x-auto">
-                <div className="min-w-[700px]">
+                <div className="min-w-175">
 
                     <svg
                         viewBox={`0 0 ${chartWidth} ${chartHeight}`}
