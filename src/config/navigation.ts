@@ -38,6 +38,7 @@ export type Page =
     | "scenario-exploration"
     | "reporting-centre"
     | "settings"
+
     // Graduate pages
     | "graduate-dashboard"
     | "skill-improved"

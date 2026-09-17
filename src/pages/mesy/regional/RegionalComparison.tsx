@@ -249,8 +249,12 @@ export default function RegionalComparison() {
                     </Card>
                 </div>
 
-                <FooterBanner paragraph="AI Regional Insight (based only on official indicators): Famagusta shows the highest youth unemployment rate (11.2%) without the presence of a local HEI. Investment in regional skill development centers is therefore a reasonable policy recommendation — however, the skill gap dimension can only be confirmed once district-level vacancy or employer demand data becomes available.
-years." />
+                <FooterBanner>
+                    <p>
+                        AI Regional Insight (based only on official indicators): Famagusta shows the highest youth unemployment rate (11.2%) without the presence of a local HEI. Investment in regional skill development centers is therefore a reasonable policy recommendation — however, the skill gap dimension can only be confirmed once district-level vacancy or employer demand data becomes available.
+                        years.
+                    </p>
+                </FooterBanner>
             </div>
 
         </>

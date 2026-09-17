@@ -258,9 +258,14 @@ export default function EuSkillsContent() {
                 columns={EuColumns}
                 filters={EuFilters}
             />
-            <FooterBanner paragraph="AI Policy Alert: 3 EU targets are flagged as 'At risk' or 'Off track'. The ICT graduates target requires the most urgent intervention — at current HEI graduation
-rates, Cyprus will reach only 58% of the 2030 target without a significant curriculum expansion. Recommend generating a policy brief for the Minister before the
-June 2025 Digital Decade submission."/>
+            <FooterBanner>
+                <p>
+                    AI Policy Alert: 3 EU targets are flagged as 'At risk' or 'Off track'. The ICT graduates target requires the most urgent intervention — at current HEI graduation
+                    rates, Cyprus will reach only 58% of the 2030 target without a significant curriculum expansion. Recommend generating a policy brief for the Minister before the
+                    June 2025 Digital Decade submission.
+                </p>
+            </FooterBanner>
+
 
             <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
                 <MiniCard

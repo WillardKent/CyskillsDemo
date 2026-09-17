@@ -286,6 +286,7 @@ export default function CurriculumMarketAlignment({
                 })}
             </div>
 
+
             {/* ================= CHART ================= */}
 
             <div className="mt-4 w-full overflow-x-auto">

@@ -65,3 +65,4 @@ export interface RoleNavConfig {
     sections: NavSection[];
     bottomItems: NavItem[];
 }
+

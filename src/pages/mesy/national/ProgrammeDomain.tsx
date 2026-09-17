@@ -128,6 +128,7 @@ const filters: TableFilter[] = [
         ],
     },
 
+
     {
         columnId: "contributingHEIs",
         label: "Contributing HEIs",
